@@ -1,0 +1,7 @@
+__pycache__/
+venv/
+app/__pycache__
+app/static/images/articles
+app/static/css/.sass-cache/
+*.pyc
+*~
