@@ -1,0 +1,77 @@
+{%extends "base.html"%}
+
+
+{% block load_form%} 
+<form class="data_load" action=""  method="POST" enctype="multipart/form-data">
+    <fieldset >
+
+        <legend class="" >
+            Carga de producto
+        </legend>
+
+
+        <div id="wrapper_inp">
+
+            <div class="w_max"> 
+                <!--<label for="artic_title">
+                    Nombre del articulo
+                </label>-->
+                <input type="text" id="artic_title" name="artic_title"
+                placeholder="Nombre del articulo" required/> 
+
+            </div>
+
+            <div class="w_max"> 
+                <!--<label for="artic_descr">
+                    Descripcion del producto 
+                </label>-->
+                <textarea id="artic_descr" 
+                    placeholder="Descripcion del producto"  name="artic_descr" required></textarea>
+            </div>
+
+            <label for="artic_img" class="artic_img">
+                Buscar imagen 
+            </label>
+            <input type="file" id="artic_img" accept="image/png, image/jpeg" class="" name="artic_img" required/>
+
+
+        </div>
+
+    </fieldset>
+
+
+    <fieldset class="secAndLoad">
+
+        <!--<label for="artic_img"> 
+            Buscar imagen 
+        </label>-->
+
+        <legend>
+            Seccion  
+        </legend>
+
+        <select name="list_sect">
+            {%for section in sections%}
+                <option value="{{section[0]}}">
+                    {{section[0]}}
+                </option>
+            {%endfor%}
+        </select>
+
+
+        <div class="sects"> 
+            <!--<label for="artic_title">
+                Nombre del articulo
+            </label>-->
+            <input type="text" name="new_sect" placeholder="Nueva seccion" >
+        </div>
+
+    </fieldset>
+
+        <button type="submit" class="">
+            cargar 
+        </button>
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+.data_load
+  box-sizing: border-box
+  padding: 1em 1em 2em 1.3em
+  width: 45%
+  margin: 3em auto
+  border: .1em solid rgba(0,0,0,.5)
+  border-radius: .5em
+
+
+  legend
+    display: block
+    width: 100%
+    text-align: left 
+    padding: .5em
+    color: rgba(0,0,0,.7)
+    font:
+      size: 1.3em
+
+
+#wrapper_inp
+  border-bottom: .1em solid #FFF
+  border-top: .1em solid #FFF
+  padding: 2em 2em 1em 2em 
+
+
+  div
+    width: 100%
+
+
+.w_max input[type=text], textarea 
+  box-sizing: border-box 
+  border-radius: .3em 
+  opacity: .9
+  width: 100%
+  border: .1em solid #ccc
+  padding: .5em
+  margin-bottom: .4em
+
+
+textarea
+  height: 7em
+
+input[type=file]
+  width: 0.1px
+  opacity: 0
+  overflow: hidden
+  z-index: -1
+  
+.artic_img
+  background-color: $col_principal
+  padding: .8em 
+  color: #FFF
+  border-radius: .4em
+  margin-top: .6em
+  display: inline-block
+  cursor: pointer
+  text-align: center
+  font:
+    size: .7em
+    weight: bold
+
+
+  &:hover
+    opacity: .8
+    cursor: pointer
+
+button[type=submit]
+  background-color: $col_principal 
+  margin-top: 2.5em
+  width: 85%
+  padding: .8em 0 .8em 0
+  border: .1em solid #FFF
+  color: #FFF
+  border-radius: .4em
+    
+  
+  &:hover
+    opacity: .8
+    cursor: pointer
+    font:
+      weight: bold
+
+
+.secAndLoad
+  box-sizing: border-box
+  
+
+  legend
+    text-align: center
+    padding: .8em 0 .8em 0
+    font:
+      size: 1em
+
+
+  select, .sects
+    height: 2em 
+    width: 30%
+    display: inline
+
+
+  .sects input
+    padding: 0
+    height: 2em 
+    margin-left: 1em
