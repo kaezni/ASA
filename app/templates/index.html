@@ -1,0 +1,88 @@
+{%extends "base.html"%}
+
+{% block main_page %}
+
+<div id="wrapper">
+
+    <header id="header_pag" role="banner">
+
+        <section id="logo" >
+        </section>
+
+        <section id="general_container_info" class="disp_none">
+
+            <div id="container_info" class="disp_none">
+
+                <p class="info">
+                    <span class="icon-phone-hang-up">
+                    </span>
+                    <span class="show_info ">
+                        0380 443-0827
+                    </span>
+                </p>
+                <p class="info">
+                    <span class="icon-location">
+                    </span> 
+                    <span class="show_info ">
+                        Lamadrid 245, F5302 La Rioja
+                    </span>
+                </p>
+                <p class="info">            
+                    <span class="icon-mail2">
+                    </span>
+                    <span class="show_info ">
+                        asaelectronia@hotmail.com
+                    </span>
+                </p> 
+                <p class="info">            
+                    <a href="https://www.facebook.com/saelectronia" target="_blank">
+                        <span class="icon-facebook">
+                        </span>       
+                    </a>
+                </p>
+
+            </div><!-- container_info-->
+
+            <div id="map" >
+
+            </div>
+
+        </section><!-- general_container_info-->
+
+        <nav id="wrapper_menu">
+            <a id="contacto" href="">
+                contacto
+            </a>
+
+            <section id="cont_cat" class="disp_none"></section>
+        </nav>
+
+
+    </header><!--headerPage-->
+
+
+    <main role="main">
+
+        <div class="bxslider">
+                {% for arts_sect in arts_and_sects%} 
+            <section class="container">
+                    <header class="">
+                        <h2> {{arts_sect}}</h2> 
+                    </header>
+
+                    {% for artic in arts_and_sects[arts_sect]%} 
+                        <div class="art_cont">
+                            <img src="static/images/articles/{{artic[1]}}" /> 
+                            <p class="artic_title">{{artic[2]}}</p> 
+                            <p class="artic_descr">{{artic[3]}}</p> 
+                        </div> 
+                    {% endfor %}
+            </section> 
+
+                {% endfor %}
+        </div><!--bxslider-->         
+    </main>
+        
+</div>
+
+{% endblock %}

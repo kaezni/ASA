@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Venta de repuestos, audio, video, articulos de computadora y reparacion" />
+        <meta name="keywords" content="asa, asa electronia, electronica, reparacion, repuestos electronicos, audio, video, computacion" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>ASA - {{title}}</title>
+
+          <script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYNggP3DyMf2Y3qRYr93boQKZXNW8RJT8&callback=initMap" type="text/javascript"></script>
+         </script>        
+    
+        {% assets "all_css"  %}
+        <link rel="stylesheet" type="text/css" href="{{ASSET_URL}}"/> 
+        {% endassets %}
+
+        {% assets "frameworks_css"  %}
+            <link rel="stylesheet" type="text/css" href="{{ASSET_URL}}"/> 
+        {% endassets %}
+
+        {% assets "frameworks_js"  %}
+            <script src="{{ASSET_URL}}"></script>
+
+        {% endassets %}
+
+        {% assets "my_js"  %}
+            <script src="{{ASSET_URL}}"></script>
+
+        {% endassets %}
+
+
+        
+
+    </head>
+
+    <body>
+        {% block login_form%}{%endblock%}
+        {% block main_page%}{%endblock%}
+        {% block load_form%}{%endblock%} 
+        {% block test%}{%endblock%}
+        {% block admin_artic%}{%endblock%}
+    </body>
+</html>

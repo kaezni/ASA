@@ -1,0 +1,169 @@
+{%extends "base.html"%}
+
+{% block main_page %}
+    <div>
+
+
+
+    <div>
+    <!----------------inicio header - header_pag---------------->
+    <header id="hader_pag" role="banner">
+        <!----------------inicio logo y formulario de busqueda---------------->
+        <section id="logo" class="">
+            <form role="search" >
+                <input type="search" name="form_busqueda"  placeholder="Buscar" autofocus="autofocus">
+            </form>
+        </section>
+        <!----------------fin logo y formulario de busqueda---------------->
+
+
+        <!----------------inicio section - general_container_info> 
+        <section id="general_container_info" class="disp_none">
+
+        <!----------------inicio container_info---------------->
+        <div id="container_info" class="disp_none">
+            <p class="info">
+                <span class="icon-phone-hang-up"></span>
+                <span class="show_info ">0380 443-0827</span>
+            </p>
+
+            <p class="info">
+                <span class="icon-location"></span>
+                <span class="show_info "> Lamadrid 245, F5302 La Rioja</span>
+            </p>
+
+            <p class="info">
+                <span class="icon-mail2"></span>
+                <span class="show_info ">asaelectronia@hotmail.com</span>
+            </p>
+
+            <p class="info">
+                <a href="https://www.facebook.com/saelectronia" target="_blank">
+                <span class="icon-facebook">
+                </span>
+                    </a>
+                </p>
+
+        </div>
+        <!----------------fin div container_info ---------------->
+
+        <div id="map" >
+            {% with %}
+                {% set location=(-23.599097,-46.675903) %}
+                {% set style="width:500px;height:500px;"%}{{                                 googlemap( "simple-map", location.0, location.1, markers=[location,], style=style) i
+                            }} 
+                    {% endwith %}
+
+            </div>
+
+        </section>
+
+        <!----------------fin section - general_container_info---------------->
+
+
+
+
+        <!----------------inicio nav wwraper menu---------------->
+
+        <nav id="wrapper_menu" >
+            <a href="" id="link_cat">Categorias</a>
+            <a href="" id="contacto">Contacto</a>
+                        
+
+            <!----------------inicio section cont_cat---------------->
+            
+            <section id="cont_cat" class="disp_none" >
+
+                <!----------------inicio nav menu_cat_gnrl---------------->
+                <nav id="menu_cat_gnrl" class="visib_hidd">
+            <!-- recisar si colocamos los h3 dentro de los a o a la inversa -->                            
+                    {% for categ in categs %}
+                        <h3>
+                            <a href="">{{categ.cat_princ}}
+                            </a>
+                        </h3>
+                    {% endfor %}
+                </nav>
+                            
+            <!----------------fin nav menu_cat_gnrl---------------->
+                            
+
+            <!----------------inicio section sub_categ---------------->
+            <section id="sub_categ" class="visib_hidd" >
+                <header><h3 >Audio</h3></header>
+
+                <!----------------inicio nav menu_sub_cat---------------->
+                    <nav id="menu_sub_cat">
+                                    
+                        <div id="sub_cat_n2">
+                            <h4>
+                                <a href="">Parlantes</a></h4>
+                                <a href="">Inalambricosdsadadadad</a>
+                                <a href="">Portatil</a>
+                                <a href="">potenciado</a>
+                                <a href="">duis nostrud eiusmod adipisicing</a>
+                                        
+                        </div>
+                        
+                        <div id="sub_cat_n2">
+                            <h4>
+                                <a  href="">Microfonos</a></h4>
+                                <a href="">ullamco qui etd sada </a>
+                                <a href="">id consectetur</a>
+                                <a href="">minim cupidatat consectetur</a>
+                                <a href="">duis nostrud eiusmod adipisicing</a>
+                                        
+                        </div>                 
+
+                        <div id="sub_cat_n2">
+                            <h4>
+                                <a  href="">Componentes</a></h4>
+                                <a href="">Cables</a>
+                                <a href="">Fichas(plug)</a>
+                                <a href="">twister</a>
+                                <a href="">duis nostrud eiusmod adipisicing</a>
+                                <a href="">duis nostrud eiusmod adipisicing</a>
+                                <a href="">duis</a>
+                                <a href="">duis nostrud</a>
+                                        
+                        </div>     
+
+                        <div id="sub_cat_n2">
+                            <h4>
+                                <a  href="">Repuestos</a>
+                            </h4>
+                                        
+                            <a href="">1 ullamco qui et</a>
+                            <a href="">2 id consectetur</a>
+                            <a href="">3 minim cupidatat consectetur</a>
+                            <a href="">4 duis nostrud eiusmod adipisicing</a>
+                                        
+                        </div>                             
+
+                        <div id="sub_cat_n2">
+                            <h4><a  href="">Otros</a></h4>
+                                    
+                            <a href="">1 ullamco qui et</a>
+                            <a href="">1 ullamco qui et</a>
+                            <a href="">1 ullamco qui et</a>
+                            <a href="">1 ullamco qui et</a>
+                            <a href="">1 ullamco qui et</a>
+                            <a href="">2 id consectetur</a>
+                            <a href="">3 minim cupidatat consectetur</a>
+                            <a href="">4 duis nostrud eiusmod adipisicing</a>
+                                        
+                        </div> 
+
+                    </nav>                            
+                    <!----------------fin nav menu_sub_cat---------------->
+                </section>
+
+                <!----------------fin section sub_cat---------------->
+            </section>
+            <!----------------fin section cont_cat---------------->
+        </nav>                    
+
+    </header>
+    <!----------------fin header - header_pag---------------->
+
+{% endblock %}
