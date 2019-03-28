@@ -247,12 +247,13 @@ footer {
   height: 24em; }
 
 table {
-  border: 0.2em solid #000;
+  border: 0.2em solid rgba(0, 0, 0, 0.2);
   width: 60%;
-  margin: auto; }
+  margin: 2.5em auto 0 auto; }
 
 .head_table {
-  background-color: #2CA8FF; }
+  background-color: #2CA8FF;
+  font-weight: bold; }
   .head_table th {
     color: #FFF;
     padding: 1em; }
@@ -330,5 +331,12 @@ button[type=submit] {
     padding: 0;
     height: 2em;
     margin-left: 1em; }
+
+aside {
+  background: #F00;
+  display: inline-block;
+  width: 25%;
+  margin: 0;
+  float: left; }
 
 /*# sourceMappingURL=style.css.map */

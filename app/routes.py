@@ -11,6 +11,11 @@ def test():
     return(render_template("test.html"))
 
 
+@app.route('/admin')
+def admin():
+    return(render_template("dashBoard.html", title="Panel de control"))
+
+
 @app.route('/delete/<string:id>')
 def delete(id):
     art = Articles()
