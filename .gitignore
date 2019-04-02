@@ -5,3 +5,4 @@ app/static/images/articles
 app/static/css/.sass-cache/
 *.pyc
 *~
+*.swp

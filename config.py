@@ -12,7 +12,7 @@ frameworks_js = Bundle("frameworks/jquery-3.3.1.min.js", "frameworks/bxslider/sr
 assets.register("frameworks_js", frameworks_js) 
 
 
-my_js= Bundle("scripts/bxslider.js", "scripts/menu.js", "scripts/googlemap.js") 
+my_js= Bundle("scripts/bxslider.js", "scripts/scripts.js", "scripts/googlemap.js") 
 assets.register("my_js", my_js) 
 
 

@@ -108,4 +108,13 @@ window.onload =function(){
     }
 
 
+
+    // Mostrat/ocultar secciones administrat
+    var load_prod  = document.getElementById("load_prod");    
+    alert(load_prod)
+    load_prod.onclick = function(){
+        alert("dont cry")
+    }
+
+
 }; 

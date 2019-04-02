@@ -45,15 +45,6 @@ table {
   border-spacing: 0; }
 
 /*---------fuentes--------- */
-/*---------Estilos generales--------- */
-body {
-  background-color: #FFF;
-  text-align: center; }
-
-a {
-  text-decoration: none;
-  color: #FFF; }
-
 /*---------Cabecera--------- */
 #logo {
   background: #000 url("../images/logo.png") 0 0/100% 100% no-repeat;
@@ -72,7 +63,8 @@ input[type="search"] {
 /*---------Contenido principal--------- */
 main {
   width: 90%;
-  margin: 4em auto; }
+  margin: 4em auto;
+  text-align: center; }
 
 .container {
   display: grid;
@@ -210,6 +202,10 @@ footer {
 .backgrnd {
   background-color: rgba(0, 0, 0, 0.9); }
 
+a {
+  color: #FFF;
+  text-decoration: none; }
+
 #container_info {
   position: absolute;
   top: 0;
@@ -247,12 +243,13 @@ footer {
   height: 24em; }
 
 table {
-  border: 0.2em solid #000;
-  width: 60%;
-  margin: auto; }
+  border: 0.2em solid rgba(0, 0, 0, 0.2);
+  width: 75%;
+  margin: 3em auto 0 auto; }
 
 .head_table {
-  background-color: #2CA8FF; }
+  background-color: #2CA8FF;
+  font-weight: bold; }
   .head_table th {
     color: #FFF;
     padding: 1em; }
@@ -274,7 +271,7 @@ table {
 .data_load {
   box-sizing: border-box;
   padding: 1em 1em 2em 1.3em;
-  width: 45%;
+  width: 60%;
   margin: 3em auto;
   border: 0.1em solid rgba(0, 0, 0, 0.5);
   border-radius: 0.5em; }
@@ -284,7 +281,8 @@ table {
     text-align: left;
     padding: 0.5em;
     color: rgba(0, 0, 0, 0.7);
-    font-size: 1.3em; }
+    font-size: 1.3em;
+    font-weight: bold; }
 
 #wrapper_inp {
   border-bottom: 0.1em solid #FFF;
@@ -336,8 +334,7 @@ button[type=submit] {
   border-radius: 0.4em; }
   button[type=submit]:hover {
     opacity: 0.8;
-    cursor: pointer;
-    font-weight: bold; }
+    cursor: pointer; }
 
 .secAndLoad {
   box-sizing: border-box; }
@@ -353,5 +350,35 @@ button[type=submit] {
     padding: 0;
     height: 2em;
     margin-left: 1em; }
+
+aside {
+  background-color: #2d3b48;
+  color: #FFF;
+  width: 25%;
+  float: left;
+  height: 100vh; }
+  aside .title {
+    padding: 0.5em 0 1.3em 0;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold; }
+  aside p:not(.title) {
+    text-align: left;
+    margin: 0.2em 0;
+    padding: 0.4em 0 0.4em 0.4em;
+    margin-left: 0.7em;
+    font-size: 0.8em; }
+    aside p:not(.title):hover {
+      background-color: rgba(255, 255, 255, 0.1); }
+
+main.dashBoard {
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  float: left;
+  width: 74%;
+  height: 100vh; }
+
+section.dashBoard {
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
