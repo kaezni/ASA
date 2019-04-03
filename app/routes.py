@@ -11,13 +11,6 @@ def test():
     return(render_template("test.html"))
 
 
-@app.route('/delete/<string:id>')
-def delete(id):
-    art = Articles()
-    art.delArtic(id) 
-    return redirect(url_for('admin'))
-
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -28,38 +21,10 @@ def index():
     return render_template('index.html',  title="Pagina principal", arts_and_sects=arts_and_sects)
 
 
-@app.route('/admin_artic', methods=["POST", "GET"])
-def admin_artic():
-
-    art = Articles()
-    arts_and_sects = art.getArticlesBySection()
-    return render_template('admin_artic.html',  title="Administrar articulos", arts_and_sects=arts_and_sects)
-
-
 @app.route('/login', methods=["POST", "GET"])
 def login():
 
     return render_template('login.html',  title='Ingreso administrativo')
-
-
-
-@app.route('/loadArtic', methods=["POST"])
-def loadArtic():
-
-    artic_title = request.form["artic_title"]
-    artic_descr = request.form["artic_descr"]
-    artic_sect = request.form["artic_sect"]
-
-    from subprocess import call
-    call('clear')
-
-    print(artic_title)
-    print(artic_descr)
-    print(artic_sect)
-
-    input()
-
-    return "some"
 
 
 
@@ -86,7 +51,7 @@ def admin():
         art.setArticle(image_name, artic_name, artic_descr, artic_sect)
         artic_img.save('app/static/images/articles/'+image_name)
 
-        return redirect(url_for('dataLoad')) 
+        return redirect(url_for('admin')) 
 
 
     sections = art.getSections()
