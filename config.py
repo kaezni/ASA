@@ -1,7 +1,7 @@
 from app import assets, app
 from flask_assets import Bundle
 
-css = Bundle("css/style.css" )
+css = Bundle("css/style.css", "css/animate.css" )
 assets.register("all_css", css)
 
 frameworks_css = Bundle("frameworks/bxslider/src/css/jquery.bxslider.css",
