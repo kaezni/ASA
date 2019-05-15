@@ -1,7 +1,10 @@
 window.onload = function(){
-    showMap(); 
-    hidenShowCont();
-    sendReqCreatArtic();
+    if(document.baseURI.indexOf("admin")!=-1){
+        hidenShowCont();
+        sendReqCreatArtic(); 
+    }else{
+        showMap(); 
+    }
 }
 
 
@@ -53,36 +56,40 @@ function showMap(){
     var link_cont = document.getElementById("contacto")
 
 
-    link_cont.onclick = function(e){
-        e.preventDefault();        
 
-            $(logo).slideUp(2000);
-            $(contenedor_info).slideDown(2000)
-            $(cont_iconos_cont).delay(2000).fadeIn(4000);
- 
-            /*Buscar alternativa a slideDown y fadeIn con JS puro*/
-            $(logo).slideUp(2000);
-            $(contenedor_info).slideDown(2000)
-            $(cont_iconos_cont).delay(2000).fadeIn(4000);
 
-            // La propiedad prevent defautl no nos permite redirigirnos 
-            // de vuelta a la pagina de inicio
-            var el = document.getElementById("contacto"); 
-            var newEl = document.createElement('a');
-            var t = document.createTextNode("inicio"); 
-            newEl.appendChild(t);
+	    /*!!!!!!!!!! funcionalidad anulada para las pantallas menores a 400px   !!!!!!!!!!!!!*/
 
-            newEl.setAttribute('href', '/');
-            
-            el.parentNode.replaceChild(newEl,el);
-            //link_cont.innerHTML = "Inicio";
-            //link_cont.href = "/";
-        
-            //parpadeo de iconos
-        
-            icons();
-    } 
-}
+//    link_cont.onclick = function(e){
+//        e.preventDefault();        
+//
+//            $(logo).slideUp(2000);
+//            $(contenedor_info).slideDown(2000)
+//            $(cont_iconos_cont).delay(2000).fadeIn(4000);
+// 
+//            /*Buscar alternativa a slideDown y fadeIn con JS puro*/
+//            $(logo).slideUp(2000);
+//            $(contenedor_info).slideDown(2000)
+//            $(cont_iconos_cont).delay(2000).fadeIn(4000);
+//
+//            // La propiedad prevent defautl no nos permite redirigirnos 
+//            // de vuelta a la pagina de inicio
+//            var el = document.getElementById("contacto"); 
+//            var newEl = document.createElement('a');
+//            var t = document.createTextNode("inicio"); 
+//            newEl.appendChild(t);
+//
+//            newEl.setAttribute('href', '/');
+//            
+//            el.parentNode.replaceChild(newEl,el);
+//            //link_cont.innerHTML = "Inicio";
+//            //link_cont.href = "/";
+//        
+//            //parpadeo de iconos
+//        
+//            icons();
+//    } 
+//}
 
 
 function icons(){
@@ -104,6 +111,5 @@ function icons(){
             iconos_info[i].classList.remove("animated", "infinite", "flash");    
         }                
         return;
-    }
-
+    } 
 }

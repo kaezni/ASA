@@ -1,4 +1,5 @@
 from app import mysql, conn, cursor
+import flask_login
 
 
 class Articles():
@@ -64,4 +65,27 @@ class Articles():
 
        
        return arts_by_sects
+
+
+
+class User(flask_login.UserMixin):
+
+
+
+    def __init__(self):
+        id=''
+        name=''
+        pswd=''
+
+
+    def getUserById(self, user_id):
+        cursor.execute('SELECT user_name, user_id, user_pswd FROM users where user_id=%s', user_id) 
+        self.name, self.id ,self.pswd  = cursor.fetchall()[0]
+
+
+    def getUserByName(self, user_name):
+
+        cursor.execute('SELECT user_id FROM users where user_name=%s', user_name) 
+
+        self.id= cursor.fetchall()[0]
 

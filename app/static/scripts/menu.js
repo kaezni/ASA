@@ -17,6 +17,8 @@ window.onload =function(){
         /*Buscar alternativa a slideDown y fadeIn con
         JS puro*/
         $(logo).slideUp(2000);
+        //getElementById("wrapp_info").classList( cont_cat.classList.add("disp_none");            
+
         $(contenedor_info).slideDown(2000)
         $(cont_iconos_cont).delay(2000).fadeIn(4000);
 

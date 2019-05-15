@@ -1,4 +1,5 @@
 from app import assets, app
+import flask_login
 from flask_assets import Bundle
 
 css = Bundle("css/style.css", "css/animate.css" )
@@ -16,9 +17,12 @@ my_js= Bundle("scripts/bxslider.js", "scripts/scripts.js", "scripts/googlemap.js
 assets.register("my_js", my_js) 
 
 
+class Conf():
 
-class ConfDb():
-    app.config['MYSQL_DATABASE_USER'] = 'arquemis'
-    app.config['MYSQL_DATABASE_PASSWORD'] = ''
+    app.secret_key = "VTJACGXkknV/eH3/00qOAF81wWeA11f3Y0SFbBrKCgjLX/rgH6G9Xjub09NVFxBfoOo="
+
+    app.config['MYSQL_DATABASE_USER'] = 'kaezni'
+    app.config['MYSQL_DATABASE_PASSWORD'] = '5m1l3'
     app.config['MYSQL_DATABASE_DB'] = 'ASA'
     app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+

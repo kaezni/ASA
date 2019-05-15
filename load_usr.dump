@@ -1,0 +1,5 @@
+INSERT INTO users VALUES
+    (NULL, 'marcelo', "admin"),
+    (NULL, 'mariana', "admin"),
+    (NULL, 'agustin', "admin")
+;

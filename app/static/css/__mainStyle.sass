@@ -1,0 +1,56 @@
+a
+    text-decoration: none
+    color: #FFF 
+
+
+main
+    width: 90%
+    margin: 4rem auto
+    text-align: center
+    display: grid
+    grid: "header header header header header header" "content content content content content content" "footer footer footer footer footer footer" 
+
+#wrapp_info 
+    position: relative 
+
+#container_info
+    position: absolute
+    top: 4rem
+    left: 0
+
+
+.info   
+    display: block
+    padding: 1rem 0 0 .5rem
+    overflow: hidden
+
+    span[class^="icon"]     
+        font-size: 2rem
+        text-align: left
+        float: left
+        background-color: #000
+        color: #FFF
+        border-radius: 2rem
+        padding: .5rem
+
+                                        
+    span[class^="icon"]:hover
+        background-color: #000
+        color: $main_col
+
+    .show_info
+        background-color: rgba(0,0,0, .9)
+        color: #FFF
+        float: left     
+        margin-left: .5rem
+        padding: 1.2em .5rem
+        border-radius:  .5rem 0 0 .5rem
+        display: none
+
+    & > span:hover + span
+        display: block 
+
+
+#map
+    width: 100vw
+    height: 90vh
