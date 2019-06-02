@@ -1,34 +1,32 @@
-.container 
-    grid-area: content
-    width: 100hv
-    grid-template-columns: repeat(5, 18%)    
-    grid-gap: .7rem
-    justify-content: center
-    grid-template-areas: "headerC headerC headerC headerC headerC "
+.container
+    display: grid
+    justify-content: center 
+    //align-content: safe center
 
-
-    header 
-        grid-area: header
-        flex-basis: 100%                           
-        color: rgba(255,0,0,.7) 
-        background-color: $col_secundario
-        color: #252525   
-        padding: .5rem
-        border-radius: .6rem 
+    header
+        margin-bottom: 2rem
   
         font:
             family: $fuente_general
             size: 1.7rem
             weight: bold 
 
+        h2
+            background-color: $col_secundario
+            color: #252525   
+            border-radius: .6rem 
+            padding: .5rem 0
+
+
+    
     div
         background-color: #FFF
         color: #FFF
         border: .2rem solid rgba($main_col,.2)
         border-radius: .5rem
-        margin: .5rem 0 
+        margin: .1rem .1rem .1rem .0rem
 
-            
+                
     img
         width: 100%
         height: 16em
@@ -44,19 +42,40 @@
 
 
     .artic_descr
-        height: 5em
+        min-height: 5em
         padding: .5em 0
         color: $col_letra
         border-radius: 0 0 .5em .5em 
 
 
-@media (min-width:400px)
-
-    main
-        display: block 
-
+@media (min-width: 600px)
     .container 
-        background-color: #00f
+        grid-template-columns: repeat(auto-fill, 32%)
+        grid-template-rows: 3rem auto
+
+        header 
+            grid-column-start: 1 
+            grid-column-end: -1 
+            //flex-basis: 100%                           
+
+@media (min-width: 1024px)
+    .container 
+        grid-template-columns: repeat(auto-fill, 19%)
+        grid-template-rows: 3rem auto
+
+        header 
+            grid-column-start: 1 
+            grid-column-end: -1 
+            //flex-basis: 100%                           
+      
+
+//@media (min-width:400px)
+//
+//    main
+//        display: block 
+//
+//    .container 
+//        background-color: #00f
 
 
 
