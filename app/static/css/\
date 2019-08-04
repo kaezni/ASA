@@ -14,7 +14,7 @@ a
     position: absolute
     top: 4rem
     left: 0
-    height: 70vh
+    height: 40vh
 
 
 .info   

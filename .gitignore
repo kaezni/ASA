@@ -6,3 +6,5 @@ app/static/css/.sass-cache/
 *.pyc
 *~
 *.swp
+style.css
+*.map

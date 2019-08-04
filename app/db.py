@@ -22,8 +22,6 @@ class Articles():
         cursor.execute('SELECT categ_id FROM categories WHERE artic_categ=%s ORDER By categ_id DESC LIMIT 1', (artic_categ)) 
         categ_ind = cursor.fetchone()
 
-
-
         cursor.execute('INSERT INTO cat_art(artic_id, categ_id) VALUES(%s, %s)', (artic_ind[0], categ_ind[0]))
 
         conn.commit()
@@ -52,16 +50,16 @@ class Articles():
        arts_by_sects={} 
        arts_sects = self.getSections() 
 
-       print(arts_sects)
-       for arts_sect in arts_sects: 
+       for arts_sect in arts_sects:
 
-          cursor.execute('select a.artic_id, a.image_name, a.artic_name, a.artic_descr from articles a, categories c, cat_art ca where a.artic_id=ca.artic_id and c.categ_id=ca.categ_id and c.artic_categ=%s', (arts_sect[0]))
+           cursor.execute('select a.artic_id, a.image_name, a.artic_name, a.artic_descr from articles a, categories c, cat_art ca where a.artic_id=ca.artic_id and c.categ_id=ca.categ_id and c.artic_categ=%s', (arts_sect[0]))
 
-          arts_by_sect = cursor.fetchall()
-          if not arts_by_sect:
-             continue 
+           arts_by_sect = cursor.fetchall()
+           
+           if not arts_by_sect:
+              continue 
 
-          arts_by_sects[arts_sect[0]]=arts_by_sect
+           arts_by_sects[arts_sect[0]]=arts_by_sect
 
        
        return arts_by_sects

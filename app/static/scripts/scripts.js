@@ -4,10 +4,32 @@ window.onload = function(){
         sendReqCreatArtic(); 
     }else{
         showMap(); 
+		sizScreen();
     }
 }
 
 
+// mediaqueries
+function sizScreen(){
+		alert('a?');
+	x= window.matchMedia("(max-width: 600px)");
+	console.log(x);
+	if (x.matches){
+		alert('b?');
+		element = document.getElementById("home");
+		element.parentNode.removeChild(element);
+		//codigo si no pasa los 600px
+	}else{
+		alert('c?');
+		//codigo si pasa los 600px
+		//var node = document.createElement("a");
+		//var textnode = document.createTextNode("contacto");
+		//node.appendChild(textnode)
+		//document.getElementById("wrapper_menu").appendChild(node);
+		
+	}	
+}
+ 
 
 // Ocultar y mostrar controles
 function hidenShowCont(){
@@ -37,16 +59,15 @@ function hidenShowCont(){
         if(flg_del_artic){
             wrapper_load_artic.classList.add("disp_none");            
             wrapper_del_artic.classList.remove("disp_none");            
-            flg_del_artic=!flg_del_artic }else{
+            flg_del_artic=!flg_del_artic 
+		}else{
             wrapper_del_artic.classList.add("disp_none");            
-
         }
     } 
 }
 
 
-
-// --------Mostrar oculpar mapA--------
+/* --------Mostrar oculpar mapA--------*/
 
 function showMap(){
 
@@ -57,59 +78,25 @@ function showMap(){
 
 
 
+	function icons(){
+		var iconos_info = document.getElementsByClassName("info");
+		var iconos_info_spn = document.getElementById("container_info");
+		// setTimeout(resaltar_iconos(true), 6000);
+		// iconos_info_spn.onmouseover = resaltar_iconos;
 
-	    /*!!!!!!!!!! funcionalidad anulada para las pantallas menores a 400px   !!!!!!!!!!!!!*/
-
-//    link_cont.onclick = function(e){
-//        e.preventDefault();        
-//
-//            $(logo).slideUp(2000);
-//            $(contenedor_info).slideDown(2000)
-//            $(cont_iconos_cont).delay(2000).fadeIn(4000);
-// 
-//            /*Buscar alternativa a slideDown y fadeIn con JS puro*/
-//            $(logo).slideUp(2000);
-//            $(contenedor_info).slideDown(2000)
-//            $(cont_iconos_cont).delay(2000).fadeIn(4000);
-//
-//            // La propiedad prevent defautl no nos permite redirigirnos 
-//            // de vuelta a la pagina de inicio
-//            var el = document.getElementById("contacto"); 
-//            var newEl = document.createElement('a');
-//            var t = document.createTextNode("inicio"); 
-//            newEl.appendChild(t);
-//
-//            newEl.setAttribute('href', '/');
-//            
-//            el.parentNode.replaceChild(newEl,el);
-//            //link_cont.innerHTML = "Inicio";
-//            //link_cont.href = "/";
-//        
-//            //parpadeo de iconos
-//        
-//            icons();
-//    } 
-//}
-
-
-function icons(){
-    var iconos_info = document.getElementsByClassName("info");
-    var iconos_info_spn = document.getElementById("container_info");
-    // setTimeout(resaltar_iconos(true), 6000);
-    // iconos_info_spn.onmouseover = resaltar_iconos;
-
-    setTimeout(function(){
-        for(var i=0; i<iconos_info.length; i++){
-            iconos_info[i].classList.add("animated", "infinite", "flash");
-        }                        
-    }, 6000);
-    
-    
-    iconos_info_spn.onmouseover = function(){
-                       
-        for(var i=0; i<iconos_info.length; i++){
-            iconos_info[i].classList.remove("animated", "infinite", "flash");    
-        }                
-        return;
-    } 
+		setTimeout(function(){
+			for(var i=0; i<iconos_info.length; i++){
+				iconos_info[i].classList.add("animated", "infinite", "flash");
+			}                        
+		}, 6000);
+		
+		
+		iconos_info_spn.onmouseover = function(){
+						
+			for(var i=0; i<iconos_info.length; i++){
+				iconos_info[i].classList.remove("animated", "infinite", "flash");    
+			}                
+			return;
+		} 
+	}
 }

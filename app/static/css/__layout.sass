@@ -1,0 +1,60 @@
+#wrapper
+    display: grid
+    grid-template-columns: repeat(5, [col-start]20%[col-end])
+    grid-template-rows: 90vh 2vh auto auto
+    //margin: 4rem auto
+
+
+    & > header
+        grid-column: 1/6
+        grid-row: 1
+        height: 90vh 
+
+
+#wrapper_menu
+    grid-column: 1/6
+    grid-row: 2
+
+    background-color: $main_col
+    color: #FFF
+
+    align-self: center
+
+    margin-bottom: 10rem
+    //display: flex
+    //flex-flow: no-wrap                
+    //width: 100%        
+    //flex: 0 0 23%
+    //position: relative    
+    // color: #666    
+
+
+main
+    grid-row: 3
+    grid-column: 1/6
+    margin-top: 5rem
+    text-align: center
+    justify-self: center
+    width: 96%
+
+
+#wrapp_info 
+    grid-column: 1/6 
+    grid-row: 4
+    position: relative 
+
+
+@media (min-width: 600px)
+    #wrapp_info 
+        grid-row: 1 
+        z-index: 1
+
+
+        header
+            z-indez: -1
+            grid-row: 1
+
+
+@media (min-width: 600px)
+    #wrapp_info 
+        //grid-row: 4 

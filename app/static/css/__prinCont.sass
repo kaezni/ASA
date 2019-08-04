@@ -1,23 +1,24 @@
 .container
     display: grid
-    justify-content: center 
-    //align-content: safe center
+    grid-template-columns: repeat(auto-fill, 100%)
+    grid-template-rows: 4.2rem auto
+
 
     header
-        margin-bottom: 2rem
+        grid-column-start: 1 
+        grid-column-end: -1 
   
-        font:
-            family: $fuente_general
-            size: 1.7rem
-            weight: bold 
 
         h2
-            background-color: $col_secundario
-            color: #252525   
+            color: rgb(255,255,255)
             border-radius: .6rem 
-            padding: .5rem 0
+            padding: 1.5rem 0 
+            background-color: rgba($main_col, .7)
 
-
+            font:
+                family: $fuente_general
+                size: 1rem
+                weight: bold 
     
     div
         background-color: #FFF
@@ -26,12 +27,13 @@
         border-radius: .5rem
         margin: .1rem .1rem .1rem .0rem
 
-                
+
     img
         width: 100%
         height: 16em
         border-radius: .5em .5em 0 0
         border-bottom: .2em solid rgba(0,0,0, .3)
+
 
     .artic_title        
         border-bottom: .1em solid rgba(0,0,0, .1)
@@ -48,45 +50,15 @@
         border-radius: 0 0 .5em .5em 
 
 
-@media (min-width: 600px)
-    .container 
-        grid-template-columns: repeat(auto-fill, 32%)
-        grid-template-rows: 3rem auto
-
-        header 
-            grid-column-start: 1 
-            grid-column-end: -1 
-            //flex-basis: 100%                           
-
-@media (min-width: 1024px)
-    .container 
-        grid-template-columns: repeat(auto-fill, 19%)
-        grid-template-rows: 3rem auto
-
-        header 
-            grid-column-start: 1 
-            grid-column-end: -1 
-            //flex-basis: 100%                           
-      
-
-//@media (min-width:400px)
-//
-//    main
-//        display: block 
-//
-//    .container 
-//        background-color: #00f
-
-
-
 .icon-chevron-left::before , .icon-chevron-right:before 
     content: "\e903"
-    background-color: rgba(0,0,0, .5)
-    border-radius: 1em
+    background-color: rgb(0,0,0)
+    border-radius: 2rem
     color: #FFF
 
+
 .icon-chevron-left:hover:before, .icon-chevron-right:hover:before
-    background-color: rgba(0,0,0, 1)
+    background-color: $main_col
 
 
 .icon-chevron-right::before 
@@ -94,4 +66,31 @@
     
 
 .bx-wrapper .bx-next
-    margin-top: .3em
+    margin-top: 1rem
+    font-size: 1.7rem
+
+
+@media (min-width: 600px)
+
+    .container 
+        grid-template-columns: repeat(auto-fill, 25%)
+        grid-template-rows: 6rem auto
+        //grid-row-gap: 1.5rem
+
+
+    .container 
+        margin-bottom: 2rem
+
+    .container header h2
+        font-size: 2rem
+
+
+    .bx-wrapper .bx-next
+        margin-top: .5rem
+        font-size: 3.5rem
+
+@media (min-width: 1024px)
+    .container
+        grid-template-columns: repeat(6, 1fr)
+
+
