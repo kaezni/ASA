@@ -3,25 +3,25 @@ window.onload = function(){
         hidenShowCont();
         sendReqCreatArtic(); 
     }else{
-        showMap(); 
-		sizScreen();
+		link_cont = document.getElementById("contacto")
+		sizScreen(); 
     }
 }
 
 
 // mediaqueries
 function sizScreen(){
-		alert('a?');
 	x= window.matchMedia("(max-width: 600px)");
-	console.log(x);
 	if (x.matches){
-		alert('b?');
 		element = document.getElementById("home");
 		element.parentNode.removeChild(element);
 		//codigo si no pasa los 600px
+		link_cont.setAttribute("class", "myClass"); 
 	}else{
-		alert('c?');
 		//codigo si pasa los 600px
+		flgMap=false;
+		link_cont.removeAttribute("href", ""); 
+		link_cont.addEventListener("click",showMap); 
 		//var node = document.createElement("a");
 		//var textnode = document.createTextNode("contacto");
 		//node.appendChild(textnode)
@@ -50,7 +50,6 @@ function hidenShowCont(){
             flg_load_artic=!flg_load_artic
         }else{
             wrapper_load_artic.classList.add("disp_none");            
-
         }
     }
 
@@ -68,19 +67,28 @@ function hidenShowCont(){
 
 
 /* --------Mostrar oculpar mapA--------*/
-
-function showMap(){
-
+function showMap(){ 
     var contenedor_info = document.getElementById("general_container_info");   
     var logo = document.getElementById("logo");
     var cont_iconos_cont = document.getElementById("container_info");    
-    var link_cont = document.getElementById("contacto")
 
+	flgMap = !flgMap;
 
+	if (flgMap){
+		logo.classList.remove("animated","fadeInDown");
+		logo.classList.add("animated", "fadeOutUp");
+		icons();
+	}
+	else{
+		logo.classList.remove("animated", "fadeOutUp");
+		logo.classList.add("animated","fadeInDown");
+	}
 
 	function icons(){
 		var iconos_info = document.getElementsByClassName("info");
 		var iconos_info_spn = document.getElementById("container_info");
+		
+		iconos_info_spn.classList.remove("disp_none");  
 		// setTimeout(resaltar_iconos(true), 6000);
 		// iconos_info_spn.onmouseover = resaltar_iconos;
 
@@ -88,7 +96,8 @@ function showMap(){
 			for(var i=0; i<iconos_info.length; i++){
 				iconos_info[i].classList.add("animated", "infinite", "flash");
 			}                        
-		}, 6000);
+		}, 7000);
+
 		
 		
 		iconos_info_spn.onmouseover = function(){

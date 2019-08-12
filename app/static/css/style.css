@@ -102,7 +102,7 @@ main {
   background: #000 url("../images/logo.png") 0 0/100% 100% no-repeat;
   height: 90vh;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 input[type=search] {
@@ -277,7 +277,6 @@ a {
 
 #wrapper_menu, #wrapper_menu * {
   margin: 0;
-  padding: 0;
   list-style: none;
   z-index: 999;
 }
@@ -418,6 +417,38 @@ button[type=submit]:hover {
   padding: 0;
   height: 2em;
   margin-left: 1em;
+}
+
+table {
+  border: 0.2em solid #000;
+  width: 60%;
+  margin: auto;
+}
+
+.head_table {
+  background-color: #2CA8FF;
+}
+.head_table th {
+  color: #FFF;
+  padding: 1em;
+}
+
+.artic_det {
+  border-bottom: 0.1em solid #EBEBEB;
+  text-align: left;
+  text-indent: 0.4em;
+}
+.artic_det th {
+  padding: 0.4em 0 0.2em 0;
+}
+.artic_det img {
+  width: 25px;
+  float: right;
+}
+.artic_det a {
+  color: #000;
+  display: block;
+  text-align: center;
 }
 
 aside {
