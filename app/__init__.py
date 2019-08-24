@@ -15,6 +15,4 @@ conn = mysql.connect()
 cursor = conn.cursor()
 
 
-from app import routes
-
-
+from app import routes 

@@ -13,11 +13,6 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 
-@app.route('/test')
-def test():
-    return(render_template("test.html"))
-
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -32,32 +27,25 @@ def index():
 @app.route('/login', methods=["POST", "GET"])
 def login(): 
 
-
-    #form = LoginForm()
-
-    #if form.validate_on_submit():
-    #     return redirect('/admin')
-    #return render_template('login.html', form = form)
-
-    
-     if request.method=="POST":
-
-         user = User()
-
-         user_name = request.form['user_name']
-         password = request.form['password']
-         check = request.form['check']
-
-         user.getUserByName(user_name) 
-
-         flask_login.login_user(user) 
-
-         return redirect(url_for('protected'))
-
-     return render_template('login.html',  title='Ingreso administrativo')
+    loginForm = LoginForm() 
+    if loginForm.validate_on_submit():
+         return redirect('/admin')
 
 
+    if request.method=="POST":
 
+        user = User()
+
+        user_name = request.form['user_name']
+        password = request.form['password']
+        check = request.form['check']
+
+        user.getUserByName(user_name) 
+
+        flask_login.login_user(user) 
+
+        return redirect(url_for('protected'))
+    return render_template('login.html',  title='Ingreso administrativo', loginForm=loginForm)
 
 
 @app.route('/delete/<string:id>')
@@ -101,9 +89,6 @@ def admin():
 
 
     return render_template('dashBoard.html',  title='administracion', sections=sections, arts_and_sects=arts_and_sects)
-
-
-
 
 
 @login_manager.user_loader

@@ -4,7 +4,6 @@ import flask_login
 
 class Articles():
 
-
     def __init__(self):
         pass
     
@@ -65,10 +64,7 @@ class Articles():
        return arts_by_sects
 
 
-
 class User(flask_login.UserMixin):
-
-
 
     def __init__(self):
         id=''
