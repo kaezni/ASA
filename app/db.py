@@ -73,13 +73,30 @@ class User(flask_login.UserMixin):
 
 
     def getUserById(self, user_id):
+        print('-----Function -------')
+        print(user_id)
         cursor.execute('SELECT user_name, user_id, user_pswd FROM users where user_id=%s', user_id) 
-        self.name, self.id ,self.pswd  = cursor.fetchall()[0]
+        self.name, self.id ,self.pswd = cursor.fetchall()[0]
+        print(self.name, self.id)
+        input()
 
 
-    def getUserByName(self, user_name):
-
+    def getUserByName(self, user_name): 
         cursor.execute('SELECT user_id FROM users where user_name=%s', user_name) 
-
         self.id= cursor.fetchall()[0]
 
+
+    def checkUser(self, user_name, user_password_form):
+        cursor.execute('SELECT user_id, user_name, user_pswd FROM users where user_name=%s', user_name) 
+        cont_query = cursor.fetchall()
+
+        if cont_query:
+            self.id, self.name, self.pswd = cont_query[0]
+            print(self.id, self.name, self.pswd) 
+            if (self.pswd == user_password_form ): 
+                return True
+            else:
+                return False
+
+        else:
+            return False

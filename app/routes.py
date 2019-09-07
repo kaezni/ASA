@@ -27,6 +27,8 @@ def index():
 @app.route('/login', methods=["POST", "GET"])
 def login(): 
 
+    error = None
+
     loginForm = LoginForm() 
     if loginForm.validate_on_submit():
          return redirect('/admin')
@@ -40,12 +42,15 @@ def login():
         password = request.form['password']
         check = request.form['check']
 
-        user.getUserByName(user_name) 
 
-        flask_login.login_user(user) 
+        if (user.checkUser(user_name, password)):
+            flask_login.login_user(user)
+            return redirect(url_for('admin'))
+        else:
+            flash('Verifique el nombre de usuario o contrasena')
+            return redirect(url_for('login'))
 
-        return redirect(url_for('protected'))
-    return render_template('login.html',  title='Ingreso administrativo', loginForm=loginForm)
+    return render_template('login.html',  title='Ingreso administrativo', loginForm=loginForm, error=error)
 
 
 @app.route('/delete/<string:id>')
@@ -96,8 +101,7 @@ def user_loader(user_id):
 
     user = User()
     #user.id = user_id 
-    user.getUserById(user_id[1])
-    
+    user.getUserById(user_id)
     return user
 
 
@@ -106,6 +110,4 @@ def user_loader(user_id):
 #@flask_login.login_required
 def protected():
     return 'user ' + flask_login.current_user.name
-
-
 
