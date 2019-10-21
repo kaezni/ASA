@@ -77,8 +77,6 @@ class User(flask_login.UserMixin):
         print(user_id)
         cursor.execute('SELECT user_name, user_id, user_pswd FROM users where user_id=%s', user_id) 
         self.name, self.id ,self.pswd = cursor.fetchall()[0]
-        print(self.name, self.id)
-        input()
 
 
     def getUserByName(self, user_name): 

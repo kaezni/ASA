@@ -331,6 +331,10 @@ footer {
   color: #FFF;
 }
 
+form {
+  border: 1px solid #F00;
+}
+
 .show {
   display: block;
 }

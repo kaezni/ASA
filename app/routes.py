@@ -40,7 +40,7 @@ def login():
 
         user_name = request.form['user_name']
         password = request.form['password']
-        check = request.form['check']
+        #check = request.form['check']
 
 
         if (user.checkUser(user_name, password)):
