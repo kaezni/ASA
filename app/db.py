@@ -40,7 +40,10 @@ class Articles():
     
 
     def delArtic(self, artic_id):
-        cursor.execute('DELETE FROM articles  WHERE articles.artic_id=%s', artic_id) 
+        from os import remove
+        cursor.execute('SELECT image_name FROM articles WHERE articles.artic_id=%s', artic_id) 
+        remove("app/static/images/articles/"+cursor.fetchall()[0][0]) 
+        cursor.execute('DELETE FROM articles WHERE articles.artic_id=%s', artic_id) 
         conn.commit()
         
 
@@ -73,8 +76,6 @@ class User(flask_login.UserMixin):
 
 
     def getUserById(self, user_id):
-        print('-----Function -------')
-        print(user_id)
         cursor.execute('SELECT user_name, user_id, user_pswd FROM users where user_id=%s', user_id) 
         self.name, self.id ,self.pswd = cursor.fetchall()[0]
 

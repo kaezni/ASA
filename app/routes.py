@@ -61,7 +61,6 @@ def delete(id):
     return redirect(url_for('admin'))
 
 
-
 @app.route('/admin', methods=["POST", "GET"])
 @flask_login.login_required
 def admin():
@@ -103,7 +102,6 @@ def user_loader(user_id):
     #user.id = user_id 
     user.getUserById(user_id)
     return user
-
 
 
 @app.route('/protected')
