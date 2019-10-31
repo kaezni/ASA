@@ -20,9 +20,11 @@ assets.register("my_js", my_js)
 class Conf():
 
     app.secret_key = "VTJACGXkknV/eH3/00qOAF81wWeA11f3Y0SFbBrKCgjLX/rgH6G9Xjub09NVFxBfoOo="
-
-    app.config['MYSQL_DATABASE_USER'] = 'asaelectronia'
-    app.config['MYSQL_DATABASE_PASSWORD'] = 'thr0ugh_4tr4v'
-    app.config['MYSQL_DATABASE_DB'] = 'ASA'
-    app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+    try: 
+        app.config['MYSQL_DATABASE_USER'] = 'asaelectronia'
+        app.config['MYSQL_DATABASE_PASSWORD'] = 'thr0ugh_4tr4v'
+        app.config['MYSQL_DATABASE_DB'] = 'ASA'
+        app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+    except:
+        print('error')
 

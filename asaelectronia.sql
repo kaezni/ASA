@@ -43,5 +43,4 @@ CREATE TABLE IF NOT EXISTS cat_art(
 );
 
 
-source load_categ.dump
 source load_usr.dump
