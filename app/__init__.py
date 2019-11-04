@@ -10,7 +10,5 @@ from config import Conf
 
 mysql = MySQL()
 mysql.init_app(app)
-conn = mysql.connect()
-cursor = conn.cursor()
 
 from app import routes 
