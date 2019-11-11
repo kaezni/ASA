@@ -72,7 +72,7 @@ table {
   margin-bottom: 10rem;
 }
 
-main {
+mainIndex {
   grid-row: 3;
   grid-column: 1/6;
   margin-top: 5rem;
@@ -455,12 +455,33 @@ table {
   text-align: center;
 }
 
-aside {
-  background: #F00;
-  display: inline-block;
-  width: 25%;
-  margin: 0;
-  float: left;
+main#dashboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+main#dashboard #dashboard_content {
+  flex-grow: 2;
+}
+main#dashboard aside {
+  background-color: #2CA8FF;
+  width: 20vw;
+  height: 100vh;
+  #flex-grow: 1;
+}
+main#dashboard aside .title {
+  text-align: center;
+}
+main#dashboard aside p {
+  padding: 1rem 0;
+  font-weight: bolder;
+  color: #FFF;
+  padding: 0.7rem 0;
+}
+main#dashboard aside .options:hover {
+  color: #2CA8FF;
+  background-color: #FFF;
 }
 
 /*# sourceMappingURL=style.css.map */

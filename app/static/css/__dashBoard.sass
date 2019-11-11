@@ -1,6 +1,29 @@
-aside
-  background: #F00
-  display: inline-block
-  width: 25%
-  margin: 0
-  float: left
+main#dashboard
+    display: flex
+    flex-direction: row 
+    flex-wrap: wrap
+    align-items: stretch
+
+    #dashboard_content 
+        flex-grow: 2
+
+    aside
+        background-color: $main_col
+        width: 20vw
+        height: 100vh
+        #flex-grow: 1
+
+
+        .title
+            text-align: center
+            
+        p
+            padding: 1rem 0
+            font-weight: bolder
+            color: #FFF
+            padding: .7rem 0
+
+        .options:hover
+                color: $main_col
+                background-color: #FFF 
+
