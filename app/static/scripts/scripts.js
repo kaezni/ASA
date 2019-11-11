@@ -28,6 +28,7 @@ function initMap(){
 }
 
 
+/* --------hide character in description--------*/ 
 
 // mediaqueries
 function sizScreen(){
