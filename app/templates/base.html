@@ -8,10 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>ASA - {{title}}</title>
 
-          <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYNggP3DyMf2Y3qRYr93boQKZXNW8RJT8&callback=initMap" type="text/javascript"></script>
-         </script>        
-    
+		<!--AIzaSyCYNggP3DyMf2Y3qRYr93boQKZXNW8RJT8-->
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYNggP3DyMf2Y3qRYr93boQKZXNW8RJT8"
+    ></script>
+
         {% assets "all_css"  %}
         <link rel="stylesheet" type="text/css" href="{{ASSET_URL}}"/> 
         {% endassets %}
@@ -28,9 +28,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYNggP3DyMf2Y3qRYr93boQKZ
         {% assets "my_js"  %}
             <script src="{{ASSET_URL}}"></script> 
         {% endassets %}
-
-
-        
 
     </head>
 

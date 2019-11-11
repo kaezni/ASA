@@ -1,4 +1,2 @@
 INSERT INTO categories VALUES
-    (NULL, 'Novedades'),
-    (NULL, 'Ofertas'),
-    (NULL, 'Destacados');
+    (NULL, '----');

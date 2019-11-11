@@ -92,7 +92,6 @@ class User(flask_login.UserMixin):
 
         if cont_query:
             self.id, self.name, self.pswd = cont_query[0]
-            print(self.id, self.name, self.pswd) 
             if (self.pswd == user_password_form ): 
                 return True
             else:
