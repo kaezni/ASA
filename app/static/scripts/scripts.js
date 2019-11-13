@@ -6,6 +6,7 @@ window.onload = function(){
     }else{
 		link_cont = document.getElementById("contacto")
 		sizScreen(); 
+		hideExtChar();
     }
 
 }
@@ -29,6 +30,20 @@ function initMap(){
 
 
 /* --------hide character in description--------*/ 
+function hideExtChar(){
+var artics_descr = document.querySelectorAll("#mainIndex .container .art_cont .artic_descr");
+
+var i;
+for (i = 0; i < artics_descr.length; i++) {
+	if (artics_descr[i].textContent.length > 200){
+		alert("texto largo " + artics_descr[i].textContent  )
+	}else{
+		alert("texto corto")
+	} 
+} 
+}
+
+
 
 // mediaqueries
 function sizScreen(){

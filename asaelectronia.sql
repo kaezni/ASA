@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS articles(
     artic_id INT(4) AUTO_INCREMENT,
     image_name varchar(200) NOT NULL,
     artic_name varchar(200) NOT NULL,
-    artic_descr varchar(200) NOT NULL,
+    artic_descr varchar(400) NOT NULL,
     PRIMARY KEY(artic_id)
 );
 
