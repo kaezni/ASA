@@ -34,14 +34,27 @@
                         <div class="art_cont">
                             <img src="static/images/articles/{{artic[1]}}" /> 
                             <p class="artic_title">{{artic[2]}}</p> 
-                            <p class="artic_descr">{{artic[3]}}</p> 
+                            <p class="artic_descr ">{{artic[3]}}</p> 
+                            <button class="toggle-content">
+                            	<span class="text">ver mas...</span>
+                            	<span class="visually-hiden"></span>
+							</button>
                         </div> 
                     {% endfor %}
             </section> 
 
                 {% endfor %}
         </div><!--bxslider-->         
+
     </main>
+
+    <aside>
+       <div id="selected_art" class="art_cont">
+          <img src="" /> 
+          <p class="artic_title"></p> 
+          <p class="artic_descr "></p> 
+       </div> 
+    </aside>
 
 
     <div id="wrapp_info" > 
