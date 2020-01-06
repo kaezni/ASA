@@ -49,22 +49,21 @@ class Articles():
 
     def getArticlesBySection(self):
 
-       arts_by_sects={} 
-       arts_sects = self.getSections() 
+        arts_by_sects={} 
+        arts_sects = self.getSections() 
 
-       for arts_sect in arts_sects:
+        for arts_sect in arts_sects:
+            self.cursor.execute('select a.artic_id, a.image_name, a.artic_name, a.artic_descr from articles a, categories c, cat_art ca where a.artic_id=ca.artic_id and c.categ_id=ca.categ_id and c.artic_categ=%s', (arts_sect[0]))
 
-           self.cursor.execute('select a.artic_id, a.image_name, a.artic_name, a.artic_descr from articles a, categories c, cat_art ca where a.artic_id=ca.artic_id and c.categ_id=ca.categ_id and c.artic_categ=%s', (arts_sect[0]))
+            arts_by_sect = self.cursor.fetchall()
 
-           arts_by_sect = self.cursor.fetchall()
-           
-           if not arts_by_sect:
-              continue 
+            if not arts_by_sect:
+                continue 
 
-           arts_by_sects[arts_sect[0]]=arts_by_sect
+            arts_by_sects[arts_sect[0]]=arts_by_sect
 
-       
-       return arts_by_sects
+        return arts_by_sects
+
 
 
 class User(flask_login.UserMixin):

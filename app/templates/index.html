@@ -24,28 +24,23 @@
     <main role="main" id="mainIndex">
 
         <div class="bxslider">
-                {% for arts_sect in arts_and_sects%} 
-            <section class="container">
+            {% for arts_sect in arts_and_sects%} 
+                <section class="container">
                     <header class="">
                         <h2> {{arts_sect}}</h2> 
                     </header>
 
                     {% for artic in arts_and_sects[arts_sect]%} 
-                        <div class="art_cont">
+					<div class="art_cont" data-articId={{artic[0]}}>
                             <img src="static/images/articles/{{artic[1]}}" /> 
-                            <p class="artic_title">{{artic[2]}}</p> 
-                            <p class="artic_descr ">{{artic[3]}}</p> 
-                            <button class="toggle-content">
-                            	<span class="text">ver mas...</span>
-                            	<span class="visually-hiden"></span>
-							</button>
+                            <p class="artic_title">{{artic[3]}}</p> 
+                            <p class="artic_descr ">{{artic[4]}}</p> 
+							
                         </div> 
                     {% endfor %}
-            </section> 
-
-                {% endfor %}
+                </section> 
+            {% endfor %}
         </div><!--bxslider-->         
-
     </main>
 
     <aside>

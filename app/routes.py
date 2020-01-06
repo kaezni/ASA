@@ -2,8 +2,8 @@ from subprocess import call
 from app import app, mysql
 from app.db import Articles, User
 from app.nameGenerator import GenerateUniqueName
-from flask import render_template, flash, redirect, url_for, request
-import os
+from flask import render_template, flash, redirect, url_for, request, jsonify
+import os, json 
 
 import flask_login
 from app.forms import LoginForm
@@ -11,20 +11,59 @@ from app.forms import LoginForm
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-@app.route('/')
-@app.route('/index')
-def index():
+
+@app.route('/test')
+def test():
+    return render_template('test2.html')
+
+@app.route('/getJson')
+def getJson():
+
+    list_main_art=dict()
 
     try: 
         conn = mysql.connect()
         cursor = conn.cursor()
         art = Articles(cursor, conn)
-        arts_and_sects = art.getArticlesBySection()
-        
-        return render_template('index.html',  title="Pagina principal", arts_and_sects=arts_and_sects)
+        arts_and_sects = art.getArticlesBySection() 
+
+        for arts_and_sect in arts_and_sects: 
+            for art in arts_and_sects[arts_and_sect]:
+                list_main_art[art[0]]=[art[1],
+                    art[2],
+                    art[3]
+                ]
+
+        return jsonify(list_main_art)
+
     finally:
         cursor.close()
 
+
+@app.route('/')
+@app.route('/index')
+def index():
+
+    list_main_art=dict()
+
+    try: 
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        art = Articles(cursor, conn)
+        arts_and_sects = art.getArticlesBySection() 
+
+        for arts_and_sect in arts_and_sects: 
+            for art in arts_and_sects[arts_and_sect]:
+                list_main_art[art[0]]=[art[1],
+                    art[2],
+                    art[3]
+                ]
+
+        list_main_art=jsonify(list_main_art)
+
+        return render_template('index.html',  title="Pagina principal", arts_and_sects=arts_and_sects, list_main_art=list_main_art)
+    finally:
+        cursor.close()
 
 
 @app.route('/login', methods=["POST", "GET"])

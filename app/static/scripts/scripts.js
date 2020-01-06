@@ -6,8 +6,9 @@ window.onload = function(){
     }else{
         link_cont = document.getElementById("contacto")
         sizScreen(); 
-        hideExtChar();
+        //hideExtChar();
         moreInfoArtSel();
+        getJson();
     }
 
 }
@@ -37,9 +38,9 @@ var artics_descr = document.querySelectorAll("#mainIndex .container .art_cont .a
 var i;
 for (i = 0; i < artics_descr.length; i++) {
     if (artics_descr[i].textContent.length > 200){
-        alert("texto largo " + artics_descr[i].textContent  )
+        console.log("texto largo " + artics_descr[i].textContent)
     }else{
-        alert("texto corto")
+        console.log("texto corto")
     } 
 } 
 }
@@ -47,10 +48,14 @@ for (i = 0; i < artics_descr.length; i++) {
 
 /* --------show more info - selected articles--------*/ 
 function moreInfoArtSel(){
-    alert('fff')
     var selec_artic = document.querySelectorAll(".container .art_cont");
-    console.log(selec_artic[1]);
-    selec_artic[1].onclick = function(){ alert('my nigga'); };
+    for(i=0;i<selec_artic.length;i++){ 
+		selec_artic[i].onclick = function(e){
+			//console.log(e); alert(e)
+			var  nodClon = e.cloneNode;
+			document.getElementById('selected_art').appendChild(nodClon);
+		};
+	}
 }
 
 
@@ -155,4 +160,17 @@ function showMap(){
     }
 }
 
+
+function getJson(){
+	fetch('/getJson').then(
+		function(response){
+			return response.text();
+		}
+	).then(
+		function (text){
+			console.log('GET response text: ');
+			console.log(JSON.parse(text));
+		}
+	); 
+} 
 
