@@ -8,7 +8,7 @@ window.onload = function(){
         sizScreen(); 
         //hideExtChar();
         moreInfoArtSel();
-        getJson();
+        //getJson();
     }
 
 }
@@ -48,14 +48,31 @@ for (i = 0; i < artics_descr.length; i++) {
 
 /* --------show more info - selected articles--------*/ 
 function moreInfoArtSel(){
-    var selec_artic = document.querySelectorAll(".container .art_cont");
+    let selec_artic = document.querySelectorAll(".container .art_cont");
     for(i=0;i<selec_artic.length;i++){ 
-		selec_artic[i].onclick = function(e){
-			//console.log(e); alert(e)
-			var  nodClon = e.cloneNode;
-			document.getElementById('selected_art').appendChild(nodClon);
-		};
-	}
+        selec_artic[i].onclick = async function(e){
+
+			let response = await fetch('/art_info',{method:'POST', body:JSON.stringify({'artic id':e.target.dataset.articid})}); 
+
+            if(response.ok){
+				let artic_sel = await response.json();
+				let artic_view = document.querySelectorAll("#selected_art>*");
+				artic_view[0].setAttribute("src","static/images/articles/"+artic_sel[2] );
+				artic_view[1].innerHTML=artic_sel[0];
+            	//let text= await response.text();
+            }else{
+            	console.log('Http error: '+ response.status);
+            }
+
+            //var  nodClon = e.cloneNode(true);
+            //console.log('.......');
+            //console.log(e);
+            //console.log('.......');
+            //console.log(nodClon);
+            //var N = document.getElementById('selected_art');
+            //N.appendChild(nodClon);
+        };
+    }
 }
 
 
@@ -162,15 +179,15 @@ function showMap(){
 
 
 function getJson(){
-	fetch('/getJson').then(
-		function(response){
-			return response.text();
-		}
-	).then(
-		function (text){
-			console.log('GET response text: ');
-			console.log(JSON.parse(text));
-		}
-	); 
+    fetch('/getJson').then(
+        function(response){
+            return response.text();
+        }
+    ).then(
+        function (text){
+            console.log('GET response text: ');
+            console.log(JSON.parse(text));
+        }
+    ); 
 } 
 

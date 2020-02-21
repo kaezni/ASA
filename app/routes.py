@@ -12,11 +12,11 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 
-@app.route('/test')
+@app.route('/test', )
 def test():
-    return render_template('test2.html')
+    return 'smile motherfuck'
 
-@app.route('/getJson')
+@app.route('/art_info', methods=['GET','POST'])
 def getJson():
 
     list_main_art=dict()
@@ -25,16 +25,20 @@ def getJson():
         conn = mysql.connect()
         cursor = conn.cursor()
         art = Articles(cursor, conn)
-        arts_and_sects = art.getArticlesBySection() 
 
-        for arts_and_sect in arts_and_sects: 
-            for art in arts_and_sects[arts_and_sect]:
-                list_main_art[art[0]]=[art[1],
-                    art[2],
-                    art[3]
-                ]
+        #get product selected
+        selected_art = art.getArticleByID(json.loads(request.data)['artic id']) 
+        return(jsonify(selected_art[0])) 
 
-        return jsonify(list_main_art)
+        #for arts_and_sect in arts_and_sects: 
+        #    for art in arts_and_sects[arts_and_sect]:
+        #        list_main_art[art[0]]=[art[1],
+        #            art[2],
+        #            art[3]
+        #        ]
+
+        #return jsonify(list_main_art)
+        #return "smile motherfuck"
 
     finally:
         cursor.close()
@@ -62,6 +66,7 @@ def index():
         list_main_art=jsonify(list_main_art)
 
         return render_template('index.html',  title="Pagina principal", arts_and_sects=arts_and_sects, list_main_art=list_main_art)
+
     finally:
         cursor.close()
 

@@ -25,8 +25,15 @@ class Articles():
         self.cursor.execute('INSERT INTO cat_art(artic_id, categ_id) VALUES(%s, %s)', (artic_ind[0], categ_ind[0])) 
         self.conn.commit()
 
+
     def getArticles(self): 
         self.cursor.execute('SELECT artic_name, artic_descr FROM articles') 
+        data = self.cursor.fetchall() 
+        return data
+
+
+    def getArticleByID(self, artic_id): 
+        self.cursor.execute('SELECT artic_name, artic_descr, image_name FROM articles WHERE artic_id=%s', artic_id) 
         data = self.cursor.fetchall() 
         return data
 

@@ -31,10 +31,9 @@
                     </header>
 
                     {% for artic in arts_and_sects[arts_sect]%} 
-					<div class="art_cont" data-articId={{artic[0]}}>
-                            <img src="static/images/articles/{{artic[1]}}" /> 
-                            <p class="artic_title">{{artic[3]}}</p> 
-                            <p class="artic_descr ">{{artic[4]}}</p> 
+					<div class="art_cont" >
+                            <img data-articId={{artic[0]}} src="static/images/articles/{{artic[1]}}" /> 
+                            <p class="artic_title">{{artic[2]}}</p> 
 							
                         </div> 
                     {% endfor %}
