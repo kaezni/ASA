@@ -52,13 +52,18 @@ function moreInfoArtSel(){
     for(i=0;i<selec_artic.length;i++){ 
         selec_artic[i].onclick = async function(e){
 
+			let mainInd = document.getElementById("mainIndex");
+			document.getElementsByTagName('aside')[0].style.setProperty('visibility','visible');
+			mainInd.style.setProperty('grid-column','3/8'); 
+
 			let response = await fetch('/art_info',{method:'POST', body:JSON.stringify({'artic id':e.target.dataset.articid})}); 
 
             if(response.ok){
 				let artic_sel = await response.json();
+				console.log(artic_sel); 
 				let artic_view = document.querySelectorAll("#selected_art>*");
 				artic_view[0].setAttribute("src","static/images/articles/"+artic_sel[2] );
-				artic_view[1].innerHTML=artic_sel[0];
+				artic_view[1].innerHTML=artic_sel[1];
             	//let text= await response.text();
             }else{
             	console.log('Http error: '+ response.status);

@@ -74,7 +74,7 @@ table {
 
 #mainIndex {
   grid-row: 3;
-  grid-column: 3/8;
+  grid-column: 1/8;
   margin-top: 5rem;
   text-align: center;
   justify-self: center;
@@ -82,14 +82,23 @@ table {
 }
 
 aside {
+  visibility: hidden;
   grid-row: 3;
   grid-column: 1/3;
   margin-top: 5rem;
-  background-color: #000;
+  box-shadow: 0px 0px 5px #2CA8FF;
+}
+aside #selected_art {
+  text-align: center;
+}
+aside #selected_art img {
+  width: 96%;
+  height: 25rem;
+  margin-top: 0.5rem;
 }
 
 #wrapp_info {
-  grid-column: 1/6;
+  grid-column: 1/8;
   grid-row: 4;
   position: relative;
 }
@@ -121,6 +130,11 @@ input[type=search] {
 input[type=search]:hover {
   width: 20%;
   transition: width 1s;
+}
+
+.artic_descr {
+  padding: 1.5rem 1.5rem;
+  color: #8c8c8c;
 }
 
 .container {
@@ -160,12 +174,6 @@ input[type=search]:hover {
   color: #8c8c8c;
   padding: 0.5em 0;
   margin: 0 auto;
-}
-.container .artic_descr {
-  min-height: 5em;
-  padding: 0.5em 0;
-  color: #8c8c8c;
-  border-radius: 0 0 0.5em 0.5em;
 }
 
 .icon-chevron-left::before, .icon-chevron-right:before {
@@ -356,6 +364,19 @@ form {
 
 .backgrnd {
   background-color: rgba(0, 0, 0, 0.9);
+}
+
+.hideMenu {
+  grid-column: 1/8;
+  grid-row: 3;
+  margin-top: 5rem;
+  text-align: center;
+  justify-self: center;
+  width: 96%;
+}
+
+.sliderMenu {
+  grid-column: 3/8;
 }
 
 .data_load {
