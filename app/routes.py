@@ -14,7 +14,7 @@ login_manager.init_app(app)
 
 @app.route('/test', )
 def test():
-    return 'smile motherfuck'
+    return '???'
 
 @app.route('/art_info', methods=['GET','POST'])
 def getJson():
@@ -30,15 +30,21 @@ def getJson():
         selected_art = art.getArticleByID(json.loads(request.data)['artic id']) 
         return(jsonify(selected_art[0])) 
 
-        #for arts_and_sect in arts_and_sects: 
-        #    for art in arts_and_sects[arts_and_sect]:
-        #        list_main_art[art[0]]=[art[1],
-        #            art[2],
-        #            art[3]
-        #        ]
+    finally:
+        cursor.close()
 
-        #return jsonify(list_main_art)
-        #return "smile motherfuck"
+
+@app.route('/searchArticAdm', methods=['GET','POST'])
+def searchArticAdm():
+
+    try: 
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        art = Articles(cursor, conn)
+
+        artic_found= art.getArticleByName(json.loads(request.data)['artic name'])
+
+        return(jsonify(artic_found)) 
 
     finally:
         cursor.close()

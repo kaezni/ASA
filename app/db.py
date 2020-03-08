@@ -38,6 +38,11 @@ class Articles():
         return data
 
 
+    def getArticleByName(self, artic_name): 
+        self.cursor.execute('SELECT artic_categ, artic_name, a.artic_id, image_name FROM articles a, categories c, cat_art ca  WHERE artic_name=%s and (a.artic_id=ca.artic_id and c.categ_id=ca.categ_id)', artic_name ) 
+        data = self.cursor.fetchall()
+        return data
+
     def getSections(self):
         self.cursor.execute('SELECT DISTINCT artic_categ FROM categories') 
         return self.cursor.fetchall() 

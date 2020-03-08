@@ -9,22 +9,19 @@
             <th>articulo</th>
             <th>borrar</th>
         </tr>
-        {% for arts_sect in arts_and_sects%} 
-            {% for artic in arts_and_sects[arts_sect]%} 
-            <tr class="artic_det">
-                <th>{{arts_sect}}</th>
-                <th>{{artic[2]}}
-                    <img src="static/images/articles/{{artic[1]}}" alt=""/>
-                </th>
-                
-                <th>
-                    <a href="/delete/{{artic[0]}}">
-                        Borrar
-                    </a>
-                </th>
-            </tr>
-            {%endfor%}
-        {%endfor%}
+
+		<tr class="artic_det">
+			<th id="art_categ_tabl"></th>
+			<th id="art_name_tabl>
+				<img src="static/images/articles/}}" alt=""/>
+			</th>
+			
+			<th >
+				<a id="del_art_tabl" href="/delete/">
+					Borrar
+				</a>
+			</th>
+		</tr> 
 
     </table>
 
