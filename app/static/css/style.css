@@ -115,7 +115,7 @@ table {
 }
 /*---------Cabecera---------*/
 #logo {
-  background: #000 url("../images/logo.png") 0 0/100% 100% no-repeat;
+  background: #000 url("../images/logo.webp") 0 0/100% 100% no-repeat;
   height: 90vh;
   position: relative;
   z-index: 2;
@@ -335,8 +335,11 @@ footer {
   color: #FFF;
 }
 
-form {
-  border: 1px solid #F00;
+#login_form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
 }
 
 .show {
