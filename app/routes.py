@@ -12,9 +12,27 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 
-@app.route('/test', )
+@app.route('/test' )
 def test():
     return '???'
+
+
+@app.route('/editArtic',methods=['GET','POST'] )
+def editArtic():
+    try: 
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        art = Articles(cursor, conn)
+
+        #get product selected
+        #selected_art = art.getArticleByID(json.loads(request.data)['artic id']) 
+        #return(jsonify(selected_art[0])) 
+        return("hello")
+
+    finally:
+        cursor.close()
+
+
 
 @app.route('/art_info', methods=['GET','POST'])
 def getJson():

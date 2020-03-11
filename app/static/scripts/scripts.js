@@ -1,9 +1,16 @@
 window.onload = function(){
 
+
     if(document.baseURI.indexOf("admin")!=-1){
         hidenShowCont();
         //sendReqCreatArtic(); 
-        searchArticAdm();
+
+		adm_table = document.getElementById("adm_table");
+		adm_table_clone = adm_table.cloneNode(true)
+		wrapper_load_artic = document.getElementById("wrapper_load_artic");
+		wrapper_edit_artic = wrapper_load_artic.cloneNode(true)
+		wrapper_admin_art = document.getElementById("wrapper_admin_art");
+
 
     }else{
         link_cont = document.getElementById("contacto")
@@ -50,15 +57,19 @@ for (let i = 0; i < artics_descr.length; i++) {
 
 
 /* --------  search product for name --------*/ 
-function searchArticAdm(){
-    document.getElementById("searchArticAdm").onclick= async function(){ 
+async function searchArticAdm(){
+
+		let adm_table_exist = await document.getElementById("adm_table");
+
+    	if(!adm_table_exist){ 
+    		wrapper_edit_artic.remove();
+    		wrapper_admin_art.appendChild(adm_table);
+    	}
 
 		let nodes_to_del = document.getElementById("tb_adm_art"); 
 
 		if (nodes_to_del){
 		    nodes_to_del.remove();
-		}else{
-			console.log(nodes_to_del); 
 		}
 
         let articName = document.getElementById("searchTxtArticAdm").value
@@ -66,7 +77,6 @@ function searchArticAdm(){
 
 		if(response.ok){
 			let found_artics = await response.json();
-			let adm_table = document.getElementById("adm_table");
 			let tb = document.getElementsByTagName("tbody");
 			let art_name = document.getElementById("art_name_tabl");
 			let del_art = document.getElementById("del_art_tabl");
@@ -74,48 +84,51 @@ function searchArticAdm(){
 			found_artics.forEach(
 				function(item){ 
 
-					let th1 = document.createElement("th")	
-					let tn = document.createTextNode(item[0])
-					th1.appendChild(tn)	
-					adm_table.appendChild(th1)
+					let th1 = document.createElement("th");	
+					let tn = document.createTextNode(item[0]);
+					th1.appendChild(tn);
+					adm_table.appendChild(th1);
 
-					let th2 = document.createElement("th")	
-					tn = document.createTextNode(item[1])
-					th2.appendChild(tn)	
-					let img  = document.createElement("img")
+					let th2 = document.createElement("th");	
+					tn = document.createTextNode(item[1]);
+					th2.appendChild(tn);	
+					let img  = document.createElement("img");
 					img.setAttribute("src","static/images/articles/"+item[3] );
-					th2.appendChild(img)	
-					adm_table.appendChild(th2)
+					th2.appendChild(img);	
+					adm_table.appendChild(th2);
 
 
-					let th3 = document.createElement("th")	
-					let a = document.createElement("a")
-					tn = document.createTextNode("borrar")
-					a.appendChild(tn)	
+					let th3 = document.createElement("th");	
+					let a = document.createElement("a");
+					tn = document.createTextNode("borrar");
+					a.appendChild(tn);	
 					a.setAttribute("href","/delete/"+ item[2]);
-					th3.appendChild(a)	
+					th3.appendChild(a);	
 
-					let th4 = document.createElement("th")	
-					let a2 = document.createElement("a")
-					tn = document.createTextNode("editar")
-					a2.appendChild(tn)	
-					a2.setAttribute("href","/edit/"+ item[2]);
-					th4.appendChild(a2)	
+					let th4 = document.createElement("th");	
+					let btn = document.createElement("input");
+					//tn = document.createTextNode("editar");
+					//a2.appendChild(tn);	
+					//a2.setAttribute("href","/editArtic"+ item[2]);
+					btn.setAttribute("type","button");
+					btn.setAttribute("value","editar");
+					btn.setAttribute("id","editArt");
+					btn.setAttribute("onclick","editArtic();");
+					th4.appendChild(btn);	
 
-					let tr = document.createElement("tr")	
+					let tr = document.createElement("tr");	
 					tr.setAttribute("class","artic_det");
 
-					tr.appendChild(th1)
-					tr.appendChild(th2)
-					tr.appendChild(th3)
-					tr.appendChild(th4)
+					tr.appendChild(th1);
+					tr.appendChild(th2);
+					tr.appendChild(th3);
+					tr.appendChild(th4);
 
 
 					if (tb.length==0){
-						console.log(tb.length);
-						tbody= document.createElement("tbody")	
+						tbody= document.createElement("tbody");	
 						tbody.setAttribute("id","tb_adm_art");
-						adm_table.appendChild(tbody) 
+						adm_table.appendChild(tbody); 
 					}
 
 					tbody.appendChild(tr); 
@@ -124,7 +137,19 @@ function searchArticAdm(){
 		}else{
 			console.log('Http error: '+ response.status);
 		} 
-	};
+}
+
+
+
+/* -------- edit article information --------*/ 
+function editArtic(){
+	
+	wrapper_edit_artic.setAttribute("id","wrapper_edit_artic");
+	wrapper_edit_artic.classList.remove("disp_none");
+	adm_table.remove();
+	wrapper_admin_art.appendChild(wrapper_edit_artic)
+	
+	//let response = await fetch('/editArtic',{method:'POST', body:JSON.stringify({'artic id':e.target.dataset.articid})}); 
 }
 
 
@@ -138,18 +163,21 @@ function moreInfoArtSel(){
 		selec_artic[i].onclick = async function(e){
 
 			let mainInd = document.getElementById("mainIndex");
-			document.getElementsByTagName('aside')[0].style.setProperty('visibility','visible');
 			mainInd.style.setProperty('grid-column','3/8'); 
+
+			let container = document.getElementsByClassName("container");
+
+			for (let i =0; i<container.length; i++){console.log(container[i]); container[i].style.setProperty('grid-template-columns', 'repeat(5, 14%)')}; 
+
+			document.getElementsByTagName('aside')[0].style.setProperty('visibility','visible');
 
 			let response = await fetch('/art_info',{method:'POST', body:JSON.stringify({'artic id':e.target.dataset.articid})}); 
 
 			if(response.ok){
 				let artic_sel = await response.json();
-				console.log(artic_sel); 
 				let artic_view = document.querySelectorAll("#selected_art>*");
 				artic_view[0].setAttribute("src","static/images/articles/"+artic_sel[2] );
 				artic_view[1].innerHTML=artic_sel[1];
-				//let text= await response.text();
 			}else{
 				console.log('Http error: '+ response.status);
 			} 
@@ -188,7 +216,6 @@ function moreInfoArtSel(){
 	var flg_del_artic= false;
 
 
-	var wrapper_load_artic= document.getElementById("wrapper_load_artic");
 
 
 	load_artic.onclick = function(){
