@@ -447,47 +447,28 @@ textarea:hover {
   margin: auto;
 }
 #wrapper_admin_art input[type=search] {
-  width: 80%;
-}
-#wrapper_admin_art button[type=submit] {
-  background-color: #2CA8FF;
-  margin-top: 1em;
-  width: 100%;
-  padding: 0.8em 0 0.8em 0;
-  border: 0.1em solid #FFF;
-  color: #FFF;
-  border-radius: 0.4em;
+  width: 85%;
 }
 
 table {
-  border: 0.2em solid #000;
   width: 100%;
+}
+table .second-c {
+  width: 35%;
+}
+table .third-c {
+  width: 30%;
 }
 
 .head_table {
   background-color: #2CA8FF;
-}
-.head_table th {
-  color: #FFF;
-  padding: 1em;
+  text-align: center;
+  font-weight: bold;
 }
 
-.artic_det {
-  border-bottom: 0.1em solid #EBEBEB;
-  text-align: left;
-  text-indent: 0.4em;
-}
-.artic_det th {
-  padding: 0.4em 0 0.2em 0;
-}
 .artic_det img {
   width: 25px;
   float: right;
-}
-.artic_det a {
-  color: #000;
-  display: block;
-  text-align: center;
 }
 
 #img_princ_cont input {

@@ -8,9 +8,8 @@ window.onload = function(){
 		adm_table = document.getElementById("adm_table");
 		adm_table_clone = adm_table.cloneNode(true)
 		wrapper_load_artic = document.getElementById("wrapper_load_artic");
-		wrapper_edit_artic = wrapper_load_artic.cloneNode(true)
-		wrapper_admin_art = document.getElementById("wrapper_admin_art");
-
+		edit_form= document.getElementById("edit_form");
+		wrapper_admin_art = document.getElementById("wrapper_admin_art"); 
 
     }else{
         link_cont = document.getElementById("contacto")
@@ -62,7 +61,7 @@ async function searchArticAdm(){
 		let adm_table_exist = await document.getElementById("adm_table");
 
     	if(!adm_table_exist){ 
-    		wrapper_edit_artic.remove();
+    		//wrapper_edit_artic.remove();
     		wrapper_admin_art.appendChild(adm_table);
     	}
 
@@ -85,11 +84,13 @@ async function searchArticAdm(){
 				function(item){ 
 
 					let th1 = document.createElement("th");	
+					th1.setAttribute("class","first-c");
 					let tn = document.createTextNode(item[0]);
 					th1.appendChild(tn);
 					adm_table.appendChild(th1);
 
 					let th2 = document.createElement("th");	
+					th2.setAttribute("class","second-c");
 					tn = document.createTextNode(item[1]);
 					th2.appendChild(tn);	
 					let img  = document.createElement("img");
@@ -99,22 +100,20 @@ async function searchArticAdm(){
 
 
 					let th3 = document.createElement("th");	
-					let a = document.createElement("a");
-					tn = document.createTextNode("borrar");
-					a.appendChild(tn);	
-					a.setAttribute("href","/delete/"+ item[2]);
-					th3.appendChild(a);	
-
-					let th4 = document.createElement("th");	
+					th3.setAttribute("class","third-c");
 					let btn = document.createElement("input");
-					//tn = document.createTextNode("editar");
-					//a2.appendChild(tn);	
-					//a2.setAttribute("href","/editArtic"+ item[2]);
 					btn.setAttribute("type","button");
-					btn.setAttribute("value","editar");
-					btn.setAttribute("id","editArt");
-					btn.setAttribute("onclick","editArtic();");
-					th4.appendChild(btn);	
+					btn.setAttribute("value","eliminar");
+					btn.setAttribute("href","/delete/"+ item[2]);
+					th3.appendChild(btn);	
+
+
+					let btn2 = document.createElement("input");
+					btn2.setAttribute("type","button");
+					btn2.setAttribute("value","editar");
+					btn2.setAttribute("id","editArt");
+					btn2.setAttribute("onclick","editArtic("+item[2]+");");
+					th3.appendChild(btn2);	
 
 					let tr = document.createElement("tr");	
 					tr.setAttribute("class","artic_det");
@@ -122,7 +121,6 @@ async function searchArticAdm(){
 					tr.appendChild(th1);
 					tr.appendChild(th2);
 					tr.appendChild(th3);
-					tr.appendChild(th4);
 
 
 					if (tb.length==0){
@@ -142,14 +140,24 @@ async function searchArticAdm(){
 
 
 /* -------- edit article information --------*/ 
-function editArtic(){
-	
-	wrapper_edit_artic.setAttribute("id","wrapper_edit_artic");
-	wrapper_edit_artic.classList.remove("disp_none");
+ async function editArtic(id_art){
+
+	let response = await fetch('/art_info',{method:'POST', body:JSON.stringify({'artic id':id_art})}); 
+
+	if (response.ok){
+		let artic = await response.json();
+		document.getElementById("edit_artic_title").value=artic[3];
+		document.getElementById("edit_artic_price").value=artic[0];
+		document.getElementById("edit_artic_descr").value=artic[1];
+	}else{
+		console.log("HTTP error: " + response.status); 
+	}
+
+	//wrapper_edit_artic.setAttribute("id","wrapper_edit_artic");
+	edit_form.classList.remove("disp_none");
 	adm_table.remove();
-	wrapper_admin_art.appendChild(wrapper_edit_artic)
+	//wrapper_admin_art.appendChild(wrapper_edit_artic)
 	
-	//let response = await fetch('/editArtic',{method:'POST', body:JSON.stringify({'artic id':e.target.dataset.articid})}); 
 }
 
 

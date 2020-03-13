@@ -2,7 +2,13 @@
 
 {% block dashBoard  %}
 
-    <main id="dashboard">
+<link 
+	rel="stylesheet" 
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+	crossorigin="anonymous"
+>
+	<main id="dashboard">
     	
 		<nav >
 			<p  class="options" id="load_artic">Carga</p>
@@ -12,28 +18,27 @@
        <section id="dashboard_content">
 
            <div class="disp_none" id="wrapper_load_artic">
-
-				<form class="data_load" action=""  method="POST" enctype="multipart/form-data">
+				<form id="load_form" class="data_load" action=""  method="POST" enctype="multipart/form-data">
 
 					<fieldset 
 
 						<legend class="" > Carga de producto </legend>
 
-						<div id="wrapper_inp">
+						<div >
 
 							<div class="w_max"> 
 								<!--<label for="artic_title"> Nombre del articulo </label>-->
-								<input type="text" id="artic_title" name="artic_title" placeholder="Nombre del articulo" required/> 
+								<input type="text" id="load_artic_title" name="artic_title" placeholder="Nombre del articulo" required/> 
 							</div>
 
 
 							<div class="w_max"> 
 								<!--<label for="artic_descr"> Descripcion del producto </label>-->
-								<textarea id="artic_descr" placeholder="Descripcion del producto"  name="artic_descr" required></textarea>
+								<textarea id="load_artic_descr" placeholder="Descripcion del producto"  name="artic_descr" required></textarea>
 							</div>
 
-							<div id="img_princ_cont" class="w_max" >
-								<input type="number" id="artic_price" name="artic_price" placeholder="$00.00" step="00.01" min="0.00" max="999999" required/>
+							<div  class="w_max" >
+								<input type="number" id="load_artic_price" name="artic_price" placeholder="$00.00" step="00.01" min="0.00" max="999999" required/>
 								<input type="file" id="artic_img" accept="image/png, image/jpeg" class="" name="artic_img" required/>
 							</div>
 						</div>
@@ -45,7 +50,7 @@
 
 						<legend> Seccion  </legend>
 
-						<select id="list_sect"  name="list_sect">
+						<select id="load_list_sect"  name="list_sect">
 							{%for section in sections%}
 								<option value="{{section[0]}}"> {{section[0]}} </option>
 							{%endfor%}
@@ -53,26 +58,76 @@
 
 						<div class="sects"> 
 							<!--<label for="artic_title"> Nombre del articulo </label>-->
-							<input id="new_sect" type="text" name="new_sect" placeholder="Nueva seccion" >
+							<input id="load_new_sect" type="text" name="new_sect" placeholder="Nueva seccion" >
 						</div> 
 					</fieldset>
 
 					<button id="createArtic" type="submit" class=""> cargar </button>
 
 				</form> 
+
 			</div>
 
-			<div class="disp_none" id="wrapper_admin_art">
-				<input id="searchTxtArticAdm" type="search">
+			<div class="disp_none " id="wrapper_admin_art">
+				<input id="searchTxtArticAdm" type="search" onfocus>
 				<input id="searchArticAdm" onclick="searchArticAdm();"  type="submit" value="buscar" >
-				<table id="adm_table" > 
+				<table id="adm_table" class="table table-hover table-dark"> 
 					<thead class="head_table">
 						<th>seccion articulo</th>
 						<th>articulo</th>
-						<th>borrar</th>
-						<th>editar</th> 
+						<th>administrar</th> 
 					</thead> 
 				</table>
+
+
+				<form id="edit_form" class="data_load disp_none" action=""  method="POST" enctype="multipart/form-data">
+
+					<fieldset 
+
+						<legend class="" > Carga de producto </legend>
+
+						<div >
+
+							<div class="w_max"> 
+								<!--<label for="artic_title"> Nombre del articulo </label>-->
+								<input type="text" id="edit_artic_title" name="artic_title" placeholder="Nombre del articulo" required/> 
+							</div>
+
+
+							<div class="w_max"> 
+								<!--<label for="artic_descr"> Descripcion del producto </label>-->
+								<textarea id="edit_artic_descr" placeholder="Descripcion del producto"  name="artic_descr" required></textarea>
+							</div>
+
+							<div  class="w_max" >
+								<input type="number" id="edit_artic_price" name="artic_price" placeholder="$00.00" step="00.01" min="0.00" max="999999" required/>
+								<input type="file" id="artic_img" accept="image/png, image/jpeg" class="" name="artic_img" required/>
+							</div>
+						</div>
+					</fieldset>
+
+					<fieldset class="secAndLoad">
+
+						<!--<label for="artic_img"> Buscar imagen </label>-->
+
+						<legend> Seccion  </legend>
+
+						<select id="edit_list_sect"  name="list_sect">
+							{%for section in sections%}
+								<option value="{{section[0]}}"> {{section[0]}} </option>
+							{%endfor%}
+						</select>
+
+						<div class="sects"> 
+							<!--<label for="artic_title"> Nombre del articulo </label>-->
+							<input id="edit_new_sect" type="text" name="new_sect" placeholder="Nueva seccion" >
+						</div> 
+					</fieldset>
+
+					<button id="createArtic" type="submit" class=""> cargar </button>
+
+				</form> 
+
 			</div>
 		</section> 
 	</main>

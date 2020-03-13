@@ -35,16 +35,13 @@ def editArtic():
 
 
 @app.route('/art_info', methods=['GET','POST'])
-def getJson():
-
-    list_main_art=dict()
+def art_info():
 
     try: 
         conn = mysql.connect()
         cursor = conn.cursor()
         art = Articles(cursor, conn)
 
-        #get product selected
         selected_art = art.getArticleByID(json.loads(request.data)['artic id']) 
         return(jsonify(selected_art[0])) 
 

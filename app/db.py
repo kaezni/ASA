@@ -33,7 +33,7 @@ class Articles():
 
 
     def getArticleByID(self, artic_id): 
-        self.cursor.execute('SELECT artic_price, artic_descr, image_name FROM articles WHERE artic_id=%s', artic_id) 
+        self.cursor.execute('SELECT artic_price, artic_descr, image_name, artic_name  FROM articles WHERE artic_id=%s', artic_id) 
         data = self.cursor.fetchall() 
         return data
 
