@@ -1,6 +1,5 @@
 window.onload = function(){
 
-
     if(document.baseURI.indexOf("admin")!=-1){
         hidenShowCont();
         //sendReqCreatArtic(); 
@@ -36,21 +35,6 @@ function initMap(){
         lng: -66.8542679}, 
         map: map,
     });
-}
-
-
-/* --------hide character in description--------*/ 
-function hideExtChar(){
-var artics_descr = document.querySelectorAll("#mainIndex .container .art_cont .artic_descr");
-
-var i;
-for (let i = 0; i < artics_descr.length; i++) {
-    if (artics_descr[i].textContent.length > 200){
-        console.log("texto largo " + artics_descr[i].textContent)
-    }else{
-        console.log("texto corto")
-    } 
-} 
 }
 
 
@@ -112,7 +96,7 @@ async function searchArticAdm(){
 					btn2.setAttribute("type","button");
 					btn2.setAttribute("value","editar");
 					btn2.setAttribute("id","editArt");
-					btn2.setAttribute("onclick","editArtic("+item[2]+");");
+					btn2.setAttribute("onclick","getEditArtic("+item[2]+");");
 					th3.appendChild(btn2);	
 
 					let tr = document.createElement("tr");	
@@ -139,16 +123,18 @@ async function searchArticAdm(){
 
 
 
-/* -------- edit article information --------*/ 
- async function editArtic(id_art){
+/* -------- get edit article information --------*/ 
+async function getEditArtic(id_art){
 
 	let response = await fetch('/art_info',{method:'POST', body:JSON.stringify({'artic id':id_art})}); 
 
 	if (response.ok){
 		let artic = await response.json();
+		document.getElementById("edit_form").setAttribute("data-articid",id_art);
 		document.getElementById("edit_artic_title").value=artic[3];
 		document.getElementById("edit_artic_price").value=artic[0];
 		document.getElementById("edit_artic_descr").value=artic[1];
+		document.getElementById("edit_list_sect").value=artic[4];
 	}else{
 		console.log("HTTP error: " + response.status); 
 	}
@@ -158,6 +144,38 @@ async function searchArticAdm(){
 	adm_table.remove();
 	//wrapper_admin_art.appendChild(wrapper_edit_artic)
 	
+}
+
+
+/* -------- Create article --------*/ 
+function createArtic(){
+	let creatArticForm = document.getElementById("load_form")
+	creatArticForm.onsubmit = async (e) => { 
+		e.preventDefault();
+		let fd = new FormData(creatArticForm);
+		let response = await fetch('/createArtic', {
+			method:'POST',
+			body: fd
+		}); 
+		console.log(await response.json())
+	}
+}
+
+
+
+/* -------- edit article --------*/ 
+function setEditArtic(){
+	let editArticForm = document.getElementById("edit_form")
+	editArticForm.onsubmit = async (e) => { 
+		e.preventDefault();
+		let fd = new FormData(editArticForm );
+		fd.append('artic id', editArticForm.getAttribute('data-articid'));
+		let response = await fetch('/editArtic', {
+			method:'POST',
+			body: fd
+		}); 
+		console.log(await response.json())
+	}
 }
 
 

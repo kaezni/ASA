@@ -12,28 +12,6 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 
-@app.route('/test' )
-def test():
-    return '???'
-
-
-@app.route('/editArtic',methods=['GET','POST'] )
-def editArtic():
-    try: 
-        conn = mysql.connect()
-        cursor = conn.cursor()
-        art = Articles(cursor, conn)
-
-        #get product selected
-        #selected_art = art.getArticleByID(json.loads(request.data)['artic id']) 
-        #return(jsonify(selected_art[0])) 
-        return("hello")
-
-    finally:
-        cursor.close()
-
-
-
 @app.route('/art_info', methods=['GET','POST'])
 def art_info():
 
@@ -139,6 +117,73 @@ def delete(id):
         cursor.close()
 
 
+@login_manager.user_loader
+@app.route('/createArtic', methods=["POST", "GET"])
+@flask_login.login_required
+def createArtic(): 
+    try: 
+        conn = mysql.connect()
+        cursor = conn.cursor()
+
+        art = Articles(cursor,conn)
+
+        artic_img = request.files['artic_img']
+        gen_name = GenerateUniqueName(cursor) 
+
+        image_name = gen_name.generateAndValidate()
+        artic_name = request.form['artic_title']
+        artic_descr = request.form['artic_descr']
+        artic_price = request.form['artic_price']
+        artic_sect = request.form['list_sect']
+        new_sect = request.form['new_sect']
+        
+        if (new_sect):
+            art.newSection(new_sect)
+            artic_sect =  new_sect  
+
+
+        art.setArticle(image_name, artic_name, artic_descr, artic_sect, artic_price)
+        artic_img.save('app/static/images/articles/'+image_name)
+
+        return "ok"
+
+    finally:
+        cursor.close()
+
+
+@app.route('/editArtic',methods=['GET','POST'] )
+def editArtic():
+    try: 
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        art = Articles(cursor, conn)
+
+        artic_img = request.files['artic_img']
+        gen_name = GenerateUniqueName(cursor) 
+
+        image_name = gen_name.generateAndValidate()
+        artic_id= request.form['artic id']
+        artic_name = request.form['artic_title']
+        artic_descr = request.form['artic_descr']
+        artic_price = request.form['artic_price']
+        artic_sect = request.form['list_sect']
+        new_sect = request.form['new_sect']
+        
+        if (new_sect):
+            art.newSection(new_sect)
+            artic_sect =  new_sect  
+
+
+        art.editArticle(artic_name, artic_descr, artic_sect, artic_price, image_name, artic_id)
+        #artic_img.save('app/static/images/articles/'+image_name)
+
+        return("ok")
+
+    finally:
+        cursor.close()
+
+
+@login_manager.user_loader
 @app.route('/admin', methods=["POST", "GET"])
 @flask_login.login_required
 def admin(): 
@@ -148,27 +193,6 @@ def admin():
         cursor = conn.cursor()
 
         art = Articles(cursor,conn)
-
-        if request.method == "POST":
-            artic_img = request.files['artic_img']
-            gen_name = GenerateUniqueName(cursor) 
-
-            image_name = gen_name.generateAndValidate()
-            artic_name= request.form['artic_title']
-            artic_sect = request.form['list_sect']
-            artic_descr = request.form['artic_descr']
-            new_sect = request.form['new_sect']
-
-            if (new_sect):
-                art.newSection(new_sect)
-                artic_sect =  new_sect  
-
-
-            art.setArticle(image_name, artic_name, artic_descr, artic_sect)
-            artic_img.save('app/static/images/articles/'+image_name)
-
-            return redirect(url_for('admin')) 
-
 
         sections = art.getSections()
         arts_and_sects = art.getArticlesBySection()

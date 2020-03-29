@@ -9,9 +9,9 @@ class Articles():
         self.conn = conn 
         
         
-    def setArticle(self, image_name, artic_name, artic_descr, artic_categ):
+    def setArticle(self, image_name, artic_name, artic_descr, artic_categ, artic_price):
 
-        self.cursor.execute('INSERT INTO articles(image_name, artic_name, artic_descr) VALUES(%s, %s, %s)', (image_name, artic_name, artic_descr)) 
+        self.cursor.execute('INSERT INTO articles(image_name, artic_name, artic_descr, artic_price) VALUES(%s, %s, %s, %s)', (image_name, artic_name, artic_descr, artic_price)) 
         self.cursor.execute('INSERT INTO categories(artic_categ) VALUES(%s)', (artic_categ)) 
         
         self.conn.commit() 
@@ -33,7 +33,7 @@ class Articles():
 
 
     def getArticleByID(self, artic_id): 
-        self.cursor.execute('SELECT artic_price, artic_descr, image_name, artic_name  FROM articles WHERE artic_id=%s', artic_id) 
+        self.cursor.execute('SELECT artic_price, artic_descr, image_name, artic_name, artic_categ  FROM articles a, categories c, cat_art ca  WHERE a.artic_id=%s AND (a.artic_id=ca.artic_id AND c.categ_id=ca.categ_id)', artic_id) 
         data = self.cursor.fetchall() 
         return data
 
@@ -76,6 +76,9 @@ class Articles():
 
         return arts_by_sects
 
+    def editArticle(self, artic_name, artic_descr, artic_categ, artic_price, artic_id):
+        self.cursor.execute('UPDATE articles a, categories c, cat_art ca SET a.artic_name=artic_name, a.artic_descr=artic_descr, a.artic_price=artic_price, c.artic_categ=artic_categ VALUES(%s, %s, %s, %s) WHERE  a.artic_id=%s AND (a.artic_id=ca.artic_id AND c.categ_id=ca.categ_id)', (artic_name, artic_descr, artic_price, artic_categ, artic_id)) 
+        self.conn.commit() 
 
 
 class User(flask_login.UserMixin):
