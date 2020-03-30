@@ -66,8 +66,7 @@
 			</div>
 
 			<div class="disp_none " id="wrapper_admin_art">
-				<input id="searchTxtArticAdm" type="search" onfocus>
-				<input id="searchArticAdm" onclick="searchArticAdm();"  type="submit" value="buscar" >
+				<input id="searchTxtArticAdm" type="search" onfocus onkeypress=searchEnter(event) placeholder="Buscar articulo">
 				<table id="adm_table" class="table table-hover table-dark"> 
 					<thead class="head_table">
 						<th>seccion articulo</th>
@@ -77,7 +76,7 @@
 				</table>
 
 
-				<form id="edit_form" class="data_load " action=""  method="POST" enctype="multipart/form-data">
+				<form id="edit_form" class="data_load disp_none" action=""  method="POST" enctype="multipart/form-data">
 
 					<legend class="" > Modificar producto </legend>
 

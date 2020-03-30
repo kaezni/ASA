@@ -77,7 +77,7 @@ class Articles():
         return arts_by_sects
 
     def editArticle(self, artic_name, artic_descr, artic_categ, artic_price, artic_id):
-        self.cursor.execute('UPDATE articles a, categories c, cat_art ca SET a.artic_name=artic_name, a.artic_descr=artic_descr, a.artic_price=artic_price, c.artic_categ=artic_categ VALUES(%s, %s, %s, %s) WHERE  a.artic_id=%s AND (a.artic_id=ca.artic_id AND c.categ_id=ca.categ_id)', (artic_name, artic_descr, artic_price, artic_categ, artic_id)) 
+        self.cursor.execute('UPDATE articles a, categories c, cat_art ca SET a.artic_name=%s, a.artic_descr=%s, a.artic_price=%s, c.artic_categ=%s  WHERE  a.artic_id=%s AND (a.artic_id=ca.artic_id AND c.categ_id=ca.categ_id)', (artic_name, artic_descr, artic_price, artic_categ, artic_id)) 
         self.conn.commit() 
 
 

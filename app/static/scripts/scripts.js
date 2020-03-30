@@ -5,10 +5,11 @@ window.onload = function(){
         //sendReqCreatArtic(); 
 
 		adm_table = document.getElementById("adm_table");
-		adm_table_clone = adm_table.cloneNode(true)
+		edit_form = document.getElementById("edit_form"); 
 		wrapper_load_artic = document.getElementById("wrapper_load_artic");
 		edit_form= document.getElementById("edit_form");
 		wrapper_admin_art = document.getElementById("wrapper_admin_art"); 
+        articName = document.getElementById("searchTxtArticAdm")
 
     }else{
         link_cont = document.getElementById("contacto")
@@ -38,14 +39,21 @@ function initMap(){
 }
 
 
+function searchEnter(e){
+	if(e.keyCode === 13){ 
+		searchArticAdm(articName.value);
+		articName.value="";
+	}
+}
+
 
 /* --------  search product for name --------*/ 
-async function searchArticAdm(){
+async function searchArticAdm(txtSearch){
 
 		let adm_table_exist = await document.getElementById("adm_table");
+		edit_form.setAttribute("class","data_load disp_none");
 
     	if(!adm_table_exist){ 
-    		//wrapper_edit_artic.remove();
     		wrapper_admin_art.appendChild(adm_table);
     	}
 
@@ -55,8 +63,8 @@ async function searchArticAdm(){
 		    nodes_to_del.remove();
 		}
 
-        let articName = document.getElementById("searchTxtArticAdm").value
-        let response= await fetch('/searchArticAdm',{method:'POST', body:JSON.stringify({'artic name':articName})}); 
+		
+        let response= await fetch('/searchArticAdm',{method:'POST', body:JSON.stringify({'artic name':txtSearch})}); 
 
 		if(response.ok){
 			let found_artics = await response.json();
@@ -127,6 +135,8 @@ async function searchArticAdm(){
 async function getEditArtic(id_art){
 
 	let response = await fetch('/art_info',{method:'POST', body:JSON.stringify({'artic id':id_art})}); 
+	edit_form.removeAttribute("disp_none");
+
 
 	if (response.ok){
 		let artic = await response.json();
@@ -139,10 +149,8 @@ async function getEditArtic(id_art){
 		console.log("HTTP error: " + response.status); 
 	}
 
-	//wrapper_edit_artic.setAttribute("id","wrapper_edit_artic");
 	edit_form.classList.remove("disp_none");
 	adm_table.remove();
-	//wrapper_admin_art.appendChild(wrapper_edit_artic)
 	
 }
 

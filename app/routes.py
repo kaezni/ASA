@@ -174,7 +174,7 @@ def editArtic():
             artic_sect =  new_sect  
 
 
-        art.editArticle(artic_name, artic_descr, artic_sect, artic_price, image_name, artic_id)
+        art.editArticle(artic_name, artic_descr, artic_sect, artic_price, artic_id)
         #artic_img.save('app/static/images/articles/'+image_name)
 
         return("ok")
