@@ -121,9 +121,16 @@ table {
   z-index: 2;
 }
 
-.artic_descr {
-  padding: 1.5rem 1.5rem;
+#aside_artic_descr {
+  padding: 1rem 1rem;
   color: #8c8c8c;
+}
+
+#aside_artic_price {
+  color: #8c8c8c;
+  padding: 1rem 0 0 0;
+  font-weight: bolder;
+  font-size: x-large;
 }
 
 .container {
@@ -150,6 +157,7 @@ table {
   border: 0.2rem solid rgba(44, 168, 255, 0.2);
   border-radius: 0.5rem;
   margin: 0.1rem 0.1rem 0.1rem 0rem;
+  cursor: pointer;
 }
 .container img {
   width: 100%;

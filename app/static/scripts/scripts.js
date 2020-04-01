@@ -38,7 +38,11 @@ function initMap(){
     });
 }
 
-
+/* -------- cuando se presionala tecla enter en la busqueda 
+ 	        de productos se ejecuta esta funcion que llama 
+            a la funcion searchTxtArticAdm que envia el nombre del 
+			articulo a la ruta correspondiente para busca el articulo
+			en la BD--------*/ 
 function searchEnter(e){
 	if(e.keyCode === 13){ 
 		searchArticAdm(articName.value);
@@ -187,7 +191,10 @@ function setEditArtic(){
 }
 
 
-/* --------show more info - selected articles--------*/ 
+/* -------- Cuando se selecciona un producto con click izquierdo 
+ 	        se envia el id del articulo a la url correspondiente
+			para que esta lo busque en la BD y devuelva la 
+			descripcion junto con el precio e imagen ---------*/ 
 function moreInfoArtSel(){
 
 	let selec_artic = document.querySelectorAll(".container .art_cont");
@@ -201,7 +208,7 @@ function moreInfoArtSel(){
 
 			let container = document.getElementsByClassName("container");
 
-			for (let i =0; i<container.length; i++){console.log(container[i]); container[i].style.setProperty('grid-template-columns', 'repeat(5, 14%)')}; 
+			for (let i =0; i<container.length; i++){ container[i].style.setProperty('grid-template-columns', 'repeat(5, 14%)')}; 
 
 			document.getElementsByTagName('aside')[0].style.setProperty('visibility','visible');
 
@@ -211,7 +218,8 @@ function moreInfoArtSel(){
 				let artic_sel = await response.json();
 				let artic_view = document.querySelectorAll("#selected_art>*");
 				artic_view[0].setAttribute("src","static/images/articles/"+artic_sel[2] );
-				artic_view[1].innerHTML=artic_sel[1];
+				artic_view[1].innerHTML="$ " + artic_sel[0].toFixed(2);
+				artic_view[2].innerHTML=artic_sel[1];
 			}else{
 				console.log('Http error: '+ response.status);
 			} 

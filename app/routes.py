@@ -34,8 +34,8 @@ def searchArticAdm():
         conn = mysql.connect()
         cursor = conn.cursor()
         art = Articles(cursor, conn)
-
-        artic_found= art.getArticleByName(json.loads(request.data)['artic name'])
+        exp_reg = "^"+(json.loads(request.data)['artic name'])
+        artic_found= art.getArticleByName(exp_reg)
 
         return(jsonify(artic_found)) 
 

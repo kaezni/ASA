@@ -39,7 +39,10 @@ class Articles():
 
 
     def getArticleByName(self, artic_name): 
-        self.cursor.execute('SELECT artic_categ, artic_name, a.artic_id, image_name FROM articles a, categories c, cat_art ca  WHERE artic_name=%s and (a.artic_id=ca.artic_id and c.categ_id=ca.categ_id)', artic_name ) 
+        self.cursor.execute('SELECT artic_categ, artic_name, a.artic_id, image_name FROM articles a, categories c, cat_art ca  WHERE artic_name REGEXP %s and (a.artic_id=ca.artic_id and c.categ_id=ca.categ_id)', artic_name ) 
+
+        #linea de codigo anterior a la modificacion con REGEXP
+        #self.cursor.execute('SELECT artic_categ, artic_name, a.artic_id, image_name FROM articles a, categories c, cat_art ca  WHERE artic_name=%s and (a.artic_id=ca.artic_id and c.categ_id=ca.categ_id)', artic_name ) 
         data = self.cursor.fetchall()
         return data
 
