@@ -141,9 +141,14 @@ def createArtic():
             art.newSection(new_sect)
             artic_sect =  new_sect  
 
-
         art.setArticle(image_name, artic_name, artic_descr, artic_sect, artic_price)
-        artic_img.save('app/static/images/articles/'+image_name)
+
+
+        from PIL import Image
+        img_conv = Image.open(artic_img).convert("RGB")
+        img_conv.save('app/static/images/articles/'+image_name, "webp")
+
+        #artic_img.save('app/static/images/articles/'+image_name)
 
         return "ok"
 

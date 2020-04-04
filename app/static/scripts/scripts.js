@@ -2,7 +2,6 @@ window.onload = function(){
 
     if(document.baseURI.indexOf("admin")!=-1){
         hidenShowCont();
-        //sendReqCreatArtic(); 
 
 		adm_table = document.getElementById("adm_table");
 		edit_form = document.getElementById("edit_form"); 
@@ -14,9 +13,7 @@ window.onload = function(){
     }else{
         link_cont = document.getElementById("contacto")
         sizScreen(); 
-        //hideExtChar();
         moreInfoArtSel();
-        //getJson();
     }
 
 }

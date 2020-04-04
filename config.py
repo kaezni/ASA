@@ -2,8 +2,8 @@ from app import assets, app
 import flask_login
 from flask_assets import Bundle
 
-css = Bundle("css/style.css", "css/animate.css" )
-assets.register("all_css", css)
+mainPageCss= Bundle("css/style.css", "css/animate.css" )
+assets.register("mainPageCss", mainPageCss)
 
 frameworks_css = Bundle("frameworks/bxslider/src/css/jquery.bxslider.css",
         "fonts/icomoon/style.css")
@@ -13,8 +13,8 @@ frameworks_js = Bundle("frameworks/jquery-3.3.1.min.js", "frameworks/bxslider/sr
 assets.register("frameworks_js", frameworks_js) 
 
 
-my_js= Bundle("scripts/bxslider.js", "scripts/scripts.js") 
-assets.register("my_js", my_js) 
+mainPageScripts= Bundle("scripts/bxslider.js", "scripts/mainPageScripts.js") 
+assets.register("mainPageScripts", mainPageScripts) 
 
 
 class Conf():
