@@ -2,11 +2,11 @@ from app import assets, app
 import flask_login
 from flask_assets import Bundle
 
-mainPageCss= Bundle("css/style.css", "css/animate.css" )
+mainPageCss= Bundle("css/mainPageCss.css", "" )
 assets.register("mainPageCss", mainPageCss)
 
 frameworks_css = Bundle("frameworks/bxslider/src/css/jquery.bxslider.css",
-        "fonts/icomoon/style.css")
+        "fonts/icomoon/style.css", "css/animate.css" )
 assets.register("frameworks_css", frameworks_css) 
 
 frameworks_js = Bundle("frameworks/jquery-3.3.1.min.js", "frameworks/bxslider/src/js/jquery.bxslider.js", "frameworks/bxslider/src/js/initScript.js") 
