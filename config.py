@@ -2,8 +2,11 @@ from app import assets, app
 import flask_login
 from flask_assets import Bundle
 
-mainPageCss= Bundle("css/mainPageCss.css", "" )
+mainPageCss= Bundle("css/mainPageCss.css", filters="cssmin", output="mainPageCss.css.min")
 assets.register("mainPageCss", mainPageCss)
+
+mainPageScripts= Bundle("scripts/bxslider.js", "scripts/mainPageScripts.js", filters="jsmin", output='mainPageScripts.js.min') 
+assets.register("mainPageScripts", mainPageScripts) 
 
 frameworks_css = Bundle("frameworks/bxslider/src/css/jquery.bxslider.css",
         "fonts/icomoon/style.css", "css/animate.css" )
@@ -11,10 +14,6 @@ assets.register("frameworks_css", frameworks_css)
 
 frameworks_js = Bundle("frameworks/jquery-3.3.1.min.js", "frameworks/bxslider/src/js/jquery.bxslider.js", "frameworks/bxslider/src/js/initScript.js") 
 assets.register("frameworks_js", frameworks_js) 
-
-
-mainPageScripts= Bundle("scripts/bxslider.js", "scripts/mainPageScripts.js") 
-assets.register("mainPageScripts", mainPageScripts) 
 
 
 class Conf():
