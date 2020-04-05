@@ -2,7 +2,7 @@ from app import assets, app
 import flask_login
 from flask_assets import Bundle
 
-mainPageCss= Bundle("css/mainPageCss.css", filters="cssmin", output="mainPageCss.css.min")
+mainPageCss= Bundle("css/mainPageCss.css", filters="cssmin", output="mainPageCss_min.css")
 assets.register("mainPageCss", mainPageCss)
 
 mainPageScripts= Bundle("scripts/bxslider.js", "scripts/mainPageScripts.js", filters="jsmin", output='mainPageScripts.js.min') 
