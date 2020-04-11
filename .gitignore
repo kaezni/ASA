@@ -8,3 +8,9 @@ app/static/css/.sass-cache/
 *.swp
 style.css
 *.map
+*\?
+bupDbAsa.sql
+chImgSiz.sh
+app/static/scripts/files\ to\ review/*
+*_min.*
+app/static/\.webassets-cache/*

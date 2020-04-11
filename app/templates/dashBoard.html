@@ -8,6 +8,14 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
 	crossorigin="anonymous"
 >
+
+	{% assets "adminPageCss"  %}
+		<link rel="stylesheet" type="text/css" href="{{ASSET_URL}}"/> 
+	{% endassets %}
+	{% assets "adminPageJs"  %}
+		<script src="{{ASSET_URL}}"></script> 
+	{% endassets %}
+
 	<main id="dashboard">
     	
 		<nav >

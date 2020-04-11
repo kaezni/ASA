@@ -10,6 +10,11 @@
 	crossorigin="anonymous"
 >
 
+
+	{% assets "loginPage"  %}
+		<link rel="stylesheet" type="text/css" href="{{ASSET_URL}}"/> 
+	{% endassets %}
+
     {%if error %}
         <p>{{error}}</p>
     {% endif %}
