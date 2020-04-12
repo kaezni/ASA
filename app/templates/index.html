@@ -25,13 +25,6 @@
 
 		<!--frameworks --> <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> 
 
-        {% assets "mainPagCssLastRend"  %}
-			<link rel="stylesheet" type="text/css" href="{{ASSET_URL}}"/> 
-        {% endassets %} 
-
-        {% assets "mainPagJsLastRend"  %}
-            <script src="{{ASSET_URL}}"></script> 
-        {% endassets %}
 
 		<link rel="stylesheet" type="text/css" href="static/fonts/icomoon/style.css"> 
 
@@ -64,6 +57,9 @@
 
 
     <div id="wrapp_info" > 
+
+		<!--AIzaSyCYNggP3DyMf2Y3qRYr93boQKZXNW8RJT8-->
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYNggP3DyMf2Y3qRYr93boQKZXNW8RJT8" ></script> 
 
         <div id="map" > </div>
 		<script>initMap();</script>
@@ -101,6 +97,13 @@
         </ div><!-- container_info-->
     </div>
         
+        {% assets "mainPagCssLastRend"  %}
+			<link rel="stylesheet" type="text/css" href="{{ASSET_URL}}"/> 
+        {% endassets %} 
+
+        {% assets "mainPagJsLastRend"  %}
+            <script src="{{ASSET_URL}}"></script> 
+        {% endassets %}
 </div>
 
 {% endblock %}

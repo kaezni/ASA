@@ -3,20 +3,23 @@ import flask_login
 from flask_assets import Bundle
 
 #"static/fonts/icomoon/style.css"
-mainPagCssFrstRend= Bundle("css/mainPageCss.css", filters="cssmin", output="mainPageCss_min.css")
-assets.register("mainPagCssFrstRend", mainPagCssFrstRend)
+#mainPagCssFrstRend= Bundle(,filters="cssmin", output="mainPageCss_min.css")
+#assets.register("mainPagCssFrstRend", mainPagCssFrstRend)
 
-mainPageJsFirstRend= Bundle("scripts/mainPageScripts.js", output="mainPagejs_min.js") 
-assets.register("mainPageJsFirstRend", mainPageJsFirstRend) 
+#mainPageJsFirstRend= Bundle(, output="mainPagejs_min.js") 
+#assets.register("mainPageJsFirstRend", mainPageJsFirstRend) 
 
-mainPagJsLastRend= Bundle("frameworks/bxslider/src/js/jquery.bxslider.js", "frameworks/bxslider/src/js/initScript.js", "scripts/bxslider.js", "scripts/mainPageScripts.js", output="mainPagJsLastRend_min.js") 
+#mainPagCssSecRend= Bundle(,filters="cssmin", output="mainPageCss_min.css")
+#assets.register("mainPagCssSecRend", mainPagCssSecRend)
+
+#mainPageJsSecRend= Bundle(, output="mainPagejs_min.js") 
+#assets.register("mainPageJsSecRend", mainPageJsSecRend) 
+
+mainPagJsLastRend= Bundle("scripts/mainPageScripts.js","frameworks/bxslider/src/js/jquery.bxslider.js", "frameworks/bxslider/src/js/initScript.js", "scripts/bxslider.js", output="mainPagJsLastRend_min.js") 
 assets.register("mainPagJsLastRend", mainPagJsLastRend)
 
-mainPagCssLastRend= Bundle("css/animate.css", "frameworks/bxslider/src/css/jquery.bxslider.css",  filters="cssmin", output="mainPagCssLastRend_min.css")
+mainPagCssLastRend= Bundle("css/mainPageCss.css", "css/animate.css", "frameworks/bxslider/src/css/jquery.bxslider.css",  filters="cssmin", output="mainPagCssLastRend_min.css")
 assets.register("mainPagCssLastRend", mainPagCssLastRend)
-
-#mainPageScripts= Bundle(, filters="jsmin", output='mainPageScripts_min.js') 
-#assets.register("mainPageScripts", mainPageScripts) 
 
 loginPage= Bundle("css/loginPage.css", filters="cssmin", output="loginPage_min.css")
 assets.register("loginPage", loginPage)
