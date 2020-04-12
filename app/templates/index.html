@@ -61,6 +61,10 @@
 		<!--AIzaSyCYNggP3DyMf2Y3qRYr93boQKZXNW8RJT8-->
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYNggP3DyMf2Y3qRYr93boQKZXNW8RJT8" ></script> 
 
+        {% assets "mainPageJsFirstRend"  %}
+            <script src="{{ASSET_URL}}"></script> 
+        {% endassets %}
+
         <div id="map" > </div>
 		<script>initMap();</script>
 

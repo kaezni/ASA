@@ -6,8 +6,8 @@ from flask_assets import Bundle
 #mainPagCssFrstRend= Bundle(,filters="cssmin", output="mainPageCss_min.css")
 #assets.register("mainPagCssFrstRend", mainPagCssFrstRend)
 
-#mainPageJsFirstRend= Bundle(, output="mainPagejs_min.js") 
-#assets.register("mainPageJsFirstRend", mainPageJsFirstRend) 
+mainPageJsFirstRend= Bundle("scripts/mainPageScripts.js", output="mainPagejs_min.js") 
+assets.register("mainPageJsFirstRend", mainPageJsFirstRend) 
 
 #mainPagCssSecRend= Bundle(,filters="cssmin", output="mainPageCss_min.css")
 #assets.register("mainPagCssSecRend", mainPagCssSecRend)
@@ -15,7 +15,7 @@ from flask_assets import Bundle
 #mainPageJsSecRend= Bundle(, output="mainPagejs_min.js") 
 #assets.register("mainPageJsSecRend", mainPageJsSecRend) 
 
-mainPagJsLastRend= Bundle("scripts/mainPageScripts.js","frameworks/bxslider/src/js/jquery.bxslider.js", "frameworks/bxslider/src/js/initScript.js", "scripts/bxslider.js", output="mainPagJsLastRend_min.js") 
+mainPagJsLastRend= Bundle("frameworks/bxslider/src/js/jquery.bxslider.js", "frameworks/bxslider/src/js/initScript.js", "scripts/bxslider.js", output="mainPagJsLastRend_min.js") 
 assets.register("mainPagJsLastRend", mainPagJsLastRend)
 
 mainPagCssLastRend= Bundle("css/mainPageCss.css", "css/animate.css", "frameworks/bxslider/src/css/jquery.bxslider.css",  filters="cssmin", output="mainPagCssLastRend_min.css")
