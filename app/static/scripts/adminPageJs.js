@@ -1,4 +1,4 @@
-window.onload = function(){
+window.onload = function(){ 
 
         hidenShowCont();
 
@@ -158,12 +158,27 @@ function setEditArtic(){
 			method:'POST',
 			body: fd
 		}); 
+
+		if(response.ok){ 
+			let req_ok = await response.json();
+			let btn_edit_artic= document.getElementById("editArtic");
+
+			if(req_ok=="true"){
+				btn_edit_artic.style.setProperty("background-color", "#2fca2f"); 
+				btn_edit_artic.innerHTML="Datos cargados"; 
+			}else{
+				btn_edit_artic.style.setProperty("background-color", "#ea3a3a"); 
+				btn_edit_artic.innerHTML="Error en la carga"; 
+			}
+		}else{
+			console.log("ff");
+		}
 	}
 }
 
 
 /* -------- change wallpaper --------*/ 
-function chngWllppr(){
+async function chngWllppr(){
 	let chng_wllppr_form = document.getElementById("chng_wllppr_form")
 	chng_wllppr_form.onsubmit = async(e) => { 
 		e.preventDefault();
@@ -172,6 +187,22 @@ function chngWllppr(){
 			method:'POST',
 			body: fd
 		}); 
+
+		if(response.ok){ 
+			let req_ok = await response.json();
+			let btn_wllppr = document.getElementById("btn_wllppr");
+
+			if(req_ok=="true"){
+				btn_wllppr.style.setProperty("background-color", "#2fca2f"); 
+				btn_wllppr.innerHTML="Imagen cargada"; 
+			}else{
+				btn_wllppr.style.setProperty("background-color", "#ea3a3a"); 
+				btn_wllppr.innerHTML="Error en la carga"; 
+			}
+		}else{
+			console.log("ff");
+		}
+
 	} 
 }
 

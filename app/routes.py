@@ -44,15 +44,21 @@ def searchArticAdm():
 
 
 @app.route('/chngWllppr', methods=['GET','POST'])
-def chngWllpp():
+def chngWllpp(): 
+    try:
 
-    logo_asa = request.files['wllppr'] 
+        logo_asa = request.files['wllppr'] 
 
-    from PIL import Image
-    img_conv = Image.open(logo_asa).convert("RGB")
-    img_conv.save("app/static/images/logo.webp", "webp")
+        from PIL import Image
+        img_conv = Image.open(logo_asa).convert("RGB")
+        img_conv.save("app/static/images/logo.webp", "webp")
 
-    return "ok"
+        return jsonify("true")
+
+    except:
+
+        return jsonify("false")
+
 
 
 @app.route('/')
@@ -192,10 +198,14 @@ def editArtic():
         art.editArticle(artic_name, artic_descr, artic_sect, artic_price, artic_id)
         #artic_img.save('app/static/images/articles/'+image_name)
 
-        return("ok")
+        return jsonify("true")
+
+    except:
+        return jsonify("false")
 
     finally:
         cursor.close()
+
 
 
 @login_manager.user_loader
