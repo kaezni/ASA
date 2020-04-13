@@ -14,3 +14,5 @@ chImgSiz.sh
 app/static/scripts/files\ to\ review/*
 *_min.*
 app/static/\.webassets-cache/*
+otros\ archivos
+app/static/images/logo.*

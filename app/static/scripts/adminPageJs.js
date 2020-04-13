@@ -7,9 +7,7 @@ window.onload = function(){
 		wrapper_load_artic = document.getElementById("wrapper_load_artic");
 		edit_form= document.getElementById("edit_form");
 		wrapper_admin_art = document.getElementById("wrapper_admin_art"); 
-        articName = document.getElementById("searchTxtArticAdm")
-
-
+        articName = document.getElementById("searchTxtArticAdm"); 
 }
 
 /* -------- cuando se presionala tecla enter en la busqueda 
@@ -160,24 +158,41 @@ function setEditArtic(){
 			method:'POST',
 			body: fd
 		}); 
-		console.log(await response.json())
 	}
 }
 
 
+/* -------- change wallpaper --------*/ 
+function chngWllppr(){
+	let chng_wllppr_form = document.getElementById("chng_wllppr_form")
+	chng_wllppr_form.onsubmit = async(e) => { 
+		e.preventDefault();
+		let fd = new FormData(chng_wllppr_form);
+		let response = await fetch('/chngWllppr', {
+			method:'POST',
+			body: fd
+		}); 
+	} 
+}
 
 // Ocultar y mostrar controles
 function hidenShowCont(){
-	var load_artic= document.getElementById("load_artic");   
-	var flg_load_artic= false;
-	var del_artic= document.getElementById("del_artic");   
-	var flg_del_artic= false;
+	let load_artic_click= document.getElementById("load_artic");   
+	let flg_load_artic= false;
+	let del_art_click= document.getElementById("del_artic");   
+	let flg_del_artic= false;
+	let chng_wllppr_click= document.getElementById("chng_wllppr");   
+	let flg_chng_wllppr= false;
+
+	let wrapper_chng_wllppr = document.getElementById("wrapper_chng_wllppr");   
 
 
-load_artic.onclick = function(){
+	load_artic_click.onclick = function(){
 		flg_load_artic=!flg_load_artic
+
 		if(flg_load_artic){
 			wrapper_admin_art.classList.add("disp_none");            
+			wrapper_chng_wllppr.classList.add("disp_none");            
 			wrapper_load_artic.classList.remove("disp_none");            
 			flg_load_artic=!flg_load_artic
 		}else{
@@ -185,15 +200,31 @@ load_artic.onclick = function(){
 		}
 	}
 
-	del_artic.onclick = function(){
+	del_art_click.onclick = function(){
 		flg_del_artic=!flg_del_artic
 		if(flg_del_artic){
 			wrapper_load_artic.classList.add("disp_none");            
+			wrapper_chng_wllppr.classList.add("disp_none");            
 			wrapper_admin_art.classList.remove("disp_none");            
 			flg_del_artic=!flg_del_artic 
 		}else{
 			wrapper_admin_art.classList.add("disp_none");            
 		}
 	} 
+
+	chng_wllppr_click.onclick = function(){
+
+
+		flg_chng_wllppr=!flg_chng_wllppr
+		if(flg_chng_wllppr){
+			wrapper_load_artic.classList.add("disp_none");            
+			wrapper_admin_art.classList.add("disp_none");            
+			wrapper_chng_wllppr.classList.remove("disp_none");            
+			flg_chng_wllppr=!flg_chng_wllppr 
+		}else{
+			wrapper_chng_wllppr.classList.add("disp_none");            
+		}
+	} 
+
 }
 

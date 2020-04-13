@@ -43,6 +43,18 @@ def searchArticAdm():
         cursor.close()
 
 
+@app.route('/chngWllppr', methods=['GET','POST'])
+def chngWllpp():
+
+    logo_asa = request.files['wllppr'] 
+
+    from PIL import Image
+    img_conv = Image.open(logo_asa).convert("RGB")
+    img_conv.save("app/static/images/logo.webp", "webp")
+
+    return "ok"
+
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -146,9 +158,7 @@ def createArtic():
 
         from PIL import Image
         img_conv = Image.open(artic_img).convert("RGB")
-        img_conv.save('app/static/images/articles/'+image_name, "webp")
-
-        #artic_img.save('app/static/images/articles/'+image_name)
+        img_conv.save('app/static/images/articles/'+image_name, "webp") 
 
         return "ok"
 

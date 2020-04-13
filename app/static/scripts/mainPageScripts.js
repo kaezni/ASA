@@ -36,6 +36,8 @@ async function moreInfoArtSel(e){
 	for (let i =0; i<container.length; i++){ container[i].style.setProperty('grid-template-columns', 'repeat(5, 14%)')}; 
 
 	mainPagAside.style.setProperty('visibility','visible');
+	mainPagAside.style.setProperty('width','100%');
+	mainPagAside.style.setProperty('transition','width 1s');
 
 	let response = await fetch('/art_info',{method:'POST', body:JSON.stringify({'artic id':e.target.dataset.articid})}); 
 
@@ -45,7 +47,6 @@ async function moreInfoArtSel(e){
 		artic_view[0].setAttribute("src","static/images/articles/"+artic_sel[2] );
 		artic_view[1].innerHTML="$ " + artic_sel[0].toFixed(2);
 		artic_view[2].innerHTML=artic_sel[1];
-		mainPagAside.classList.add("animated", "fadeInLeft");
 	}else{
 		console.log('Http error: '+ response.status);
 	} 
