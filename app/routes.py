@@ -122,15 +122,18 @@ def login():
     return render_template('login.html',  title='Ingreso administrativo', loginForm=loginForm, error=error)
 
 
-@app.route('/delete/<string:id>')
+@app.route('/delete', methods=["POST", "GET"])
 @flask_login.login_required
-def delete(id):
+def delete():
     try: 
         conn = mysql.connect()
         cursor = conn.cursor()
-        art = Articles(cursor,conn)
-        art.delArtic(id) 
-        return redirect(url_for('admin'))
+        art = Articles(cursor,conn) 
+        art.delArtic(json.loads(request.data)["artic id"]) 
+
+        return jsonify("true")
+    except:
+        return jsonify("false")
     finally:
         cursor.close()
 

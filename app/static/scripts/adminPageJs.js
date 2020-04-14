@@ -72,7 +72,7 @@ async function searchArticAdm(txtSearch){
 					let btn = document.createElement("input");
 					btn.setAttribute("type","button");
 					btn.setAttribute("value","eliminar");
-					btn.setAttribute("href","/delete/"+ item[2]);
+					btn.setAttribute("onclick","deleteArticle(event, "+ item[2]+")");
 					th3.appendChild(btn);	
 
 
@@ -204,6 +204,27 @@ async function chngWllppr(){
 		}
 
 	} 
+}
+
+
+/* -------- delete article --------*/ 
+async function deleteArticle(e, article_id){
+
+		let response = await fetch('/delete', { method:'POST', body:JSON.stringify({'artic id':article_id})});
+
+		if(response.ok){
+
+			let req_ok = await response.json(); 
+
+			if(req_ok=="true"){
+				e.target.parentNode.parentNode.remove()
+			}else{
+			}
+		}else{
+			console.log(response.status);
+		}
+
+	//} 
 }
 
 // Ocultar y mostrar controles
